@@ -60,7 +60,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </a>
         )}
       </li>
-    );
   };
 
   return (
@@ -100,3 +99,4 @@ export const Sidebar: React.FC<SidebarProps> = ({
     </div>
   );
 };
+
