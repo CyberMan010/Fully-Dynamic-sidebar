@@ -18,7 +18,10 @@ export type IconName =
   | 'sidebar-left'
   | 'sidebar-right'
   | 'trade'
-  | 'user-octagon';
+  | 'user-octagon'
+  | 'search-normal'
+  | 'cmd-icon'
+  | 'cmd-icon2'
  
 
 
