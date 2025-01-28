@@ -1,42 +1,54 @@
+import { IconName } from "./icons";
+
+
 export const sidebarConfig = {
+
     admin: [
+  
       {
-        id: 'dashboard',
-        type: 'link' as const,
+  
+        id: '1',
+  
+        type: 'link',
+  
         label: 'Dashboard',
-        icon: 'home',
-        href: '/dashboard'
+  
+        icon: 'home-2' as IconName, 
+  
+        href: '/dashboard',
+  
       },
+  
       {
-        id: 'users',
-        type: 'submenu' as const,
-        label: 'Users',
-        icon: 'users',
+  
+        id: '2',
+  
+        type: 'submenu',
+  
+        label: 'User Management',
+  
+        icon: 'profile-2user' as IconName,
+  
         items: [
+  
           {
-            id: 'users-list',
-            type: 'link' as const,
-            label: 'All Users',
-            icon: 'users',
-            href: '/users'
+  
+            id: '2-1',
+  
+            type: 'link',
+  
+            label: 'Profile',
+  
+            icon: 'profile' as IconName, // Cast to IconName
+  
+            href: '/profile',
+  
           },
-          {
-            id: 'users-settings',
-            type: 'link' as const,
-            label: 'Settings',
-            icon: 'settings',
-            href: '/users/settings'
-          }
-        ]
-      }
+  
+        ],
+  
+      },
+  
     ],
-    user: [
-      {
-        id: 'profile',
-        type: 'link' as const,
-        label: 'Profile',
-        icon: 'user',
-        href: '/profile'
-      }
-    ]
+  
   };

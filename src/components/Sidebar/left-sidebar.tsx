@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Icon } from '../../config/icons';
 import { SidebarItem, Permission } from '../../types/types';
-import './Sidebar.scss';
+import { LinkItem } from '../../types/types';
+import '../../styles/sidebar_style.scss'
+
+
 
 interface SidebarProps {
   items: SidebarItem[];

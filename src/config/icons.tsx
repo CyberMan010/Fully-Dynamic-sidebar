@@ -18,7 +18,7 @@ export type IconName =
   | 'sidebar-left'
   | 'sidebar-right'
   | 'trade'
-  | 'user-octagon'
+  | 'user-octagon';
  
 
 
@@ -30,7 +30,7 @@ interface IconProps {
   
   export const Icon: React.FC<IconProps> = ({ name, className = '', size = 24 }) => (
     <img 
-      src={`/icons/${name}.svg`} 
+      src={`public/${name}.svg`} 
       alt={`${name} icon`}
       width={size}
       height={size}
