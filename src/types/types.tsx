@@ -1,5 +1,6 @@
-export type IconName = 'home' | 'users' | 'settings' | 'sidebar-left' | 'sidebar-right';
+// types.tsx
 
+import { IconName } from '../config/icons';
 export type ItemType = 'link' | 'submenu' | 'divider';
 export type Permission = 'admin' | 'user' | 'editor';
 

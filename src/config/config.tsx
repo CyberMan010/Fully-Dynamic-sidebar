@@ -1,4 +1,7 @@
+// config.tsx
+
 import { IconName } from "./icons";
+
 
 
 export const sidebarConfig = {

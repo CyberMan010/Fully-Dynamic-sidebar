@@ -1,3 +1,5 @@
+// icons.tsx
+
 export type IconName = 
   | 'add'
   | 'arrange-square'
@@ -21,7 +23,7 @@ export type IconName =
   | 'user-octagon'
   | 'search-normal'
   | 'cmd-icon'
-  | 'cmd-icon2'
+  | 'cmd-icon2';
  
 
 

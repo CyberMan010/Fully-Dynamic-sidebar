@@ -1,94 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+body {
+  margin: 0;
+  line-height: normal;
+};
 .sidebar {
-    height: 100vh;
-    background: #1a1a1a;
-    color: white;
-    transition: width 0.3s;
-    overflow-x: hidden;
-    
-    &.expanded { width: 240px; }
-    &.collapsed { width: 64px; }
-  
+  font-size: 29.24px;
+  line-height: 45.69px;
+  width: 320px;
+  height: 100vh;
+  top: 20px;
+  left: 296px;
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #172554;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+
+  &.collapsed {
+    width: 108px;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    flex: 1 0 0;
+    align-self: stretch;
+
     .header {
+      width: 76px;
+      height: 68.71px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .logo-container {
+        border-radius: 12px;
+        background: #0C1A46;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        align-self: center;
+        transition: all 0.3s ease;
+      }
+
+      .logo {
+        width: 39.78px;
+        height: 42.087px;
+      }
+
+      .app-name,
+      input,
+      .shortcut,
+      .menu-text,
+      .header-menu {
+        display: none;
+      }
+
+      .menu-icon {
+        margin: 0 auto;
+      }
+
+      .toggle {
+        position: absolute;
+        left: 150px;
+        top: 39px;
+        display: flex;
+        width: 28px;
+        height: 28px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  .header-menu {
+    font-family: Cairo;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    padding: 0px 24px;
+    width: 99.97px;
+    height: 41.93px;
+    width: 294px;
+  }
+
+  .header {
+    width: 294px;
+    height: 68.71px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c1a46;
+
+    .logo-container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
-      border-bottom: 1px solid #2a2a2a;
-      
-      button {
-        background: none;
-        border: none;
-        color: white;
+      width: 294px;
+      height: 68.71px;
+      padding: 7.31px;
+      transition: all 0.3s ease;
+
+      .logo {
+        width: 39.78px;
+        height: 42.087px;
+        margin-left: 7.31px;
+        cursor: pointer;
+      }
+
+      .app-name {
+        margin-left: 10px;
+        font-weight: 500;
+        font-family: Cairo;
+        font-size: 29.241px;
+        line-height: 45.69px;
+        padding: 7.31px;
         cursor: pointer;
       }
     }
 
-    .search-wrapper {
-
-        position: relative;
-        display: flex;
-        align-items: center;
-        background: #2a2a2a;
-        border-radius: 6px;
-        padding: 0.5rem;
-    
-        .search-icon {
-          color: #666;
-          margin-right: 0.5rem;
-        }
-
-        input {
-            flex: 1;
-            background: none;
-            border: none;
-            color: white;
-            outline: none;
-            font-size: 0.9rem;
-      
-            &::placeholder {
-              color: #666;
-            }
-            .keybinds {
-                display: flex;
-                align-items: center;
-                gap: 4px;
-                color: #666;
-                padding-left: 0.5rem;
-                border-left: 1px solid #444;
-          
-                span {
-                  font-size: 12px;
-                }
-
-  
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.75rem 1rem;
-      color: white;
-      text-decoration: none;
+    .toggle {
       cursor: pointer;
-      border: none;
-      background: none;
-      width: 100%;
-      
+
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+
+  .search {
+    padding-top: 16px;
+
+    .search-container {
+      display: flex;
+      padding: 8px 12px;
+      align-items: center;
+      border-radius: 8px;
+      margin-bottom: 80px;
+      background: rgba(239, 246, 255, 0.2);
+      transition: all 0.3s ease;
+
+      .search-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        flex-shrink: 0;
+        padding-left: 12px;
+      }
+
+      input {
+        flex-grow: 1;
+        background: none;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 14px;
+
+        &::placeholder {
+          color: #bbb;
+        }
+      }
+
+      .cmd-icons {
+        display: flex;
+        gap: 8px;
+        padding: 2.5px;
+
+        .icon {
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &.collapsed {
+      .search-container {
+        justify-content: center;
+        width: 76px;
+
+        input,
+        .cmd-icons {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .main-menu-text {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 24px;
+    margin-bottom: 16px; /* Add margin-bottom to create space */
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 18px;
+    color: #eff6ff;
+    font-family: Cairo;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 24px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(23, 37, 84, 0.8);
+      border-radius: 16px;
+    }
+
+    .menu-item {
+      display: flex;
+      padding: 8px 12px;
+      align-items: center;
+      gap: 12px;
+      flex: 1 0 0;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      border-radius: 8px;
+      margin-top: 6px;
+      margin-right: 12px;
+      margin-left: 12px;
+
       &:hover {
-        background: #2a2a2a;
+        background: rgba(239, 246, 255, 0.2);
       }
-      
+
       &.active {
-        background: #333;
+        background-color: #1d4ed8;
+      }
+
+      .menu-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+      }
+
+      .menu-text {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 25px;
+      }
+
+      .add-sign-icon {
+        margin-left: auto;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
-  
-    .submenu {
-      padding-left: 1rem;
-      background: #222;
-    }
-  
-    .divider {
-      margin: 0.5rem 0;
-      border-color: #2a2a2a;
-    }
-  }}}}
+  }
+}
+
+.logoIcon {
+  width: 39.8px;
+  position: relative;
+  height: 42.1px;
+}
+
+.arenaLogoIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logoText {
+  position: relative;
+  line-height: 45.69px;
+  font-weight: 500;
+}
+
+.arenaLogoType {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 0px 11px 11px;
+}
+
+.arenaFullLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 7.3px;
+}
+
+.arenaLogo {
+  width: 212px;
+  border-radius: 10.97px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebarLeftIcon {
+  width: 28px;
+  position: relative;
+  height: 28px;
+}
+
+.logoColapsSection {
+  align-self: stretch;
+  border-radius: 12px;
+  background-color: #0c1a46;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 6px 12px;
+}
+
+.searchNormalIcon {
+  width: 24px;
+  position: relative;
+  height: 24px;
+}
+
+.users {
+  width: 103px;
+  position: relative;
+  line-height: 25px;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.iconsearch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+.cmdIcon {
+  border-radius: 4px;
+  background-color: rgba(23, 37, 84, 0.6);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+}
+
+.cmdIcon1 {
+  border-radius: 4px;
+  background-color: rgba(23, 37, 84, 0.6);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+}
+
+.users1 {
+  position: relative;
+  line-height: 25px;
+  font-weight: 500;
+}
+
+.cmdIcon1 {
+  border-radius: 4px;
+  background-color: rgba(23, 37, 84, 0.6);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px;
+  box-sizing: border-box;
+}
+
+.cmd {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 18px;
+}
+
+.searchBar {
+  align-self: stretch;
+  border-radius: 8px;
+  background-color: rgba(239, 246, 255, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+.sideMenuHeader {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.title {
+  flex: 1;
+  position: relative;
+  line-height: 25px;
+  font-weight: 500;
+}
+
+.headline {
+  width: 294px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 24px;
+  box-sizing: border-box;
+}
+
+.addIcon {
+  width: 20px;
+  position: relative;
+  height: 20px;
+}
+
+.sideMenuButtonPlaceholder {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  gap: 12px;
+}
+
+.sideMenuButton {
+  align-self: stretch;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sideMenuButtonPlaceholder1 {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 12px;
+  gap: 12px;
+}
+
+.sideMenuButton1 {
+  align-self: stretch;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.sideMenuButton2 {
+  align-self: stretch;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.navMenu {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.mainMenuContanir {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  font-size: 18px;
+}
+
+.sideMenuSingle {
+  border-radius: 16px;
+  background-color: #172554;
+  height: 972px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+  box-sizing: border-box;
+  gap: 28px;
+}
+
+.sideMenu {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 29.24px;
+  color: #eff6ff;
+  font-family: Cairo;
+}
