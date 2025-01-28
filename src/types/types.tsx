@@ -1,4 +1,4 @@
-export type IconName = 'home' | 'users' | 'settings' | 'chevron-left' | 'chevron-right';
+export type IconName = 'home' | 'users' | 'settings' | 'sidebar-left' | 'sidebar-right';
 
 export type ItemType = 'link' | 'submenu' | 'divider';
 export type Permission = 'admin' | 'user' | 'editor';
