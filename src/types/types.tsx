@@ -1,5 +1,6 @@
-export type IconName = 'home' | 'users' | 'settings' | 'sidebar-left' | 'sidebar-right';
+// types.tsx
 
+import { IconName } from '../config/icons';
 export type ItemType = 'link' | 'submenu' | 'divider';
 export type Permission = 'admin' | 'user' | 'editor';
 
@@ -30,10 +31,3 @@ export interface DividerItem extends BaseItem {
 }
 
 export type SidebarItem = LinkItem | SubmenuItem | DividerItem;
-
-export interface MenuItem {
-  id: string;
-  label: string;
-  icon: IconName;
-  expandable?: boolean;
-}

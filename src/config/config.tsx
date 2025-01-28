@@ -1,3 +1,5 @@
+// config.tsx
+
 import { IconName } from "./icons";
 
 
