@@ -1,94 +1,148 @@
+// sidebar.scss
 .sidebar {
-    height: 100vh;
-    background: #1a1a1a;
-    color: white;
-    transition: width 0.3s;
-    overflow-x: hidden;
-    
-    &.expanded { width: 240px; }
-    &.collapsed { width: 64px; }
+  display: flex;
+  height: 972px;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  border-radius: 16px;
+  background: #172554; // Blue-950
+  color: white;
+  transition: width 0.3s;
+  overflow-x: hidden;
   
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
-      border-bottom: 1px solid #2a2a2a;
-      
-      button {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-      }
+  &.expanded { 
+    width: 240px; 
+  }
+  
+  &.collapsed { 
+    width: 64px;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    width: 100%;
+
+    .search-icon {
+      color: rgba(255, 255, 255, 0.6);
+      margin-right: 0.5rem;
     }
 
-    .search-wrapper {
-
-        position: relative;
-        display: flex;
-        align-items: center;
-        background: #2a2a2a;
-        border-radius: 6px;
-        padding: 0.5rem;
-    
-        .search-icon {
-          color: #666;
-          margin-right: 0.5rem;
-        }
-
-        input {
-            flex: 1;
-            background: none;
-            border: none;
-            color: white;
-            outline: none;
-            font-size: 0.9rem;
-      
-            &::placeholder {
-              color: #666;
-            }
-            .keybinds {
-                display: flex;
-                align-items: center;
-                gap: 4px;
-                color: #666;
-                padding-left: 0.5rem;
-                border-left: 1px solid #444;
-          
-                span {
-                  font-size: 12px;
-                }
-
-  
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.75rem 1rem;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
+    input {
+      flex: 1;
       background: none;
-      width: 100%;
-      
+      border: none;
+      color: white;
+      outline: none;
+      font-size: 0.9rem;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    .keybinds {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: rgba(255, 255, 255, 0.6);
+      padding-left: 0.5rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    h2 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+
       &:hover {
-        background: #2a2a2a;
-      }
-      
-      &.active {
-        background: #333;
+        background: rgba(255, 255, 255, 0.1);
       }
     }
-  
-    .submenu {
-      padding-left: 1rem;
-      background: #222;
+  }
+
+  nav {
+    width: 100%;
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
-  
-    .divider {
-      margin: 0.5rem 0;
-      border-color: #2a2a2a;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    color: #EFF6FF;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
-  }}}}
+    
+    &.active {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .submenu {
+    padding-left: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .divider {
+    margin: 8px 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}

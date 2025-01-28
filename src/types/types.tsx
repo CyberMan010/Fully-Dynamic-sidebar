@@ -30,3 +30,10 @@ export interface DividerItem extends BaseItem {
 }
 
 export type SidebarItem = LinkItem | SubmenuItem | DividerItem;
+
+export interface MenuItem {
+  id: string;
+  label: string;
+  icon: IconName;
+  expandable?: boolean;
+}
