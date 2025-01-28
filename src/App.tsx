@@ -1,12 +1,11 @@
+import Sidebar from './Sidebar/left-sidebar'
 import './styles/main_style.scss'
 
 function App() {
 
   return (
     <>
-    <h1>
-      Hello World
-    </h1>
+    <Sidebar defaultExpanded={true} />
     </>
   )
 }
