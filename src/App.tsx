@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <div className="app">
       <Sidebar
         items={items}
-        userPermissions={[userRole]}
+        userRole={[userRole]}
         defaultExpanded={true}
         onSearch={handleSearch}
       />
