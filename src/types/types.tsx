@@ -1,15 +1,15 @@
 export type IconName = 'home' | 'users' | 'settings' | 'chevron-left' | 'chevron-right';
 
-type ItemType = 'link' | 'submenu' | 'divider';
+export type ItemType = 'link' | 'submenu' | 'divider';
 export type Permission = 'admin' | 'user' | 'editor';
 
-interface BaseItem {
+export interface BaseItem {
   id: string;
   type: ItemType;
   permissions?: Permission[];
 }
 
-interface NavItem extends BaseItem {
+export interface NavItem extends BaseItem {
   type: 'link' | 'submenu';
   label: string;
   icon: IconName;

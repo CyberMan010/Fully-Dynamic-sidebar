@@ -1,3 +1,11 @@
+export type IconName = 
+  | 'user'
+  | 'settings'
+  | 'book'
+  | 'sidebar-left' 
+  | 'sidebar-right';
+
+
 interface IconProps {
     name: IconName;
     className?: string;
