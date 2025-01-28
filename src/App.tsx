@@ -1,4 +1,4 @@
-import Sidebar from './Sidebar/left-sidebar'
+import Sidebar from './components/Sidebar/left-sidebar'
 import './styles/main_style.scss'
 
 function App() {
