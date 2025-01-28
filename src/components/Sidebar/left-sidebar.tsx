@@ -72,17 +72,17 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
   return (
     <div className={`sidebar ${isExpanded ? '' : 'collapsed'}`}>
       <div className="header">
-        <div className="logo-container">
-          <Icon name="Logo Icon" size={32} className="logo" />
-          {isExpanded && <div className="app-name">ARENA</div>}
+        <div className="logo-container arenaLogo">
+          <Icon name="Logo Icon" size={32} className="logo logoIcon" />
+          {isExpanded && <div className="app-name logoText">ARENA</div>}
         </div>
         <div className="toggle" onClick={toggleSidebar}>
-          <Icon name={isExpanded ? 'sidebar-left' : 'sidebar-right'} size={24} />
+          <Icon name={isExpanded ? 'sidebar-left' : 'sidebar-right'} size={24} className="sidebarLeftIcon" />
         </div>
       </div>
       <div className={`search ${isExpanded ? '' : 'collapsed'}`}>
-        <div className="search-container">
-          <Icon name="search-normal" size={16} className="search-icon" />
+        <div className="search-container searchBar">
+          <Icon name="search-normal" size={24} className="search-icon searchNormalIcon" />
           <input
             type="text"
             placeholder="Search"
@@ -90,9 +90,9 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
             onChange={handleSearch}
             aria-label="Search menu items"
           />
-          <div className="cmd-icons">
-            <Icon name="cmd-icon" size={24} />
-            <Icon name="cmd-icon2" size={24} />
+          <div className="cmd-icons cmd">
+            <Icon name="cmd-icon" size={24} className="cmdIcon" />
+            <Icon name="cmd-icon2" size={24} className="cmdIcon1" />
           </div>
         </div>
       </div>
