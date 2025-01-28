@@ -10,15 +10,18 @@ interface SidebarProps {
   items: SidebarItem[];
   defaultExpanded?: boolean;
   userPermissions?: Permission[];
+  onSearch?: (query: string) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
   items,
   defaultExpanded = true,
-  userPermissions = []
+  userPermissions = [],
+  onSearch
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [openSubmenus, setOpenSubmenus] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const hasPermission = (permissions?: Permission[]) => 
     !permissions || permissions.some(p => userPermissions.includes(p));
@@ -59,20 +62,44 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </a>
         )}
       </li>
-    );
   };
 
   return (
     <div className={`sidebar ${isExpanded ? 'expanded' : 'collapsed'}`}>
-      <div className="header">
-        {isExpanded && <h2>Menu</h2>}
-        <button onClick={() => setIsExpanded(!isExpanded)}>
-          <Icon name={isExpanded ? 'sidebar-left' : 'sidebar-right'} />
-        </button>
+    {isExpanded && (
+      <div className="search-container">
+        <div className="search-wrapper">
+          <Icon name="search-normal" className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              onSearch?.(e.target.value);
+            }}
+          />
+          <div className="keybinds">
+            <Icon name="cmd-icon" size={16} />
+            <span>+</span>
+            <Icon name="cmd-icon2" size={16} />
+          </div>
+        </div>
       </div>
-      <nav>
-        <ul>{items.map(renderItem)}</ul>
-      </nav>
+    )}
+    
+    <div className="header">
+      {isExpanded && <h2>Menu</h2>}
+      <button onClick={() => setIsExpanded(!isExpanded)}>
+        <Icon name={isExpanded ? 'chevron-left' : 'chevron-right'} />
+      </button>
     </div>
-  );
+    
+    <nav>
+      <ul>{items.map(renderItem)}</ul>
+    </nav>
+  </div>
+);
+};
+ 
 };
