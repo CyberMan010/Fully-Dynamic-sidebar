@@ -60,6 +60,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </a>
         )}
       </li>
+    );
   };
 
   return (
@@ -89,7 +90,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="header">
         {isExpanded && <h2>Menu</h2>}
         <button onClick={() => setIsExpanded(!isExpanded)}>
-          <Icon name={isExpanded ? 'sidebar-left' : 'sidebar-right'} />
+          <Icon name={isExpanded ? 'chevron-left' : 'chevron-right'} />
         </button>
       </div>
 
@@ -99,4 +100,3 @@ export const Sidebar: React.FC<SidebarProps> = ({
     </div>
   );
 };
-
