@@ -1,7 +1,7 @@
 export type IconName = 'home' | 'users' | 'settings' | 'chevron-left' | 'chevron-right';
 
 type ItemType = 'link' | 'submenu' | 'divider';
-type Permission = 'admin' | 'user' | 'editor';
+export type Permission = 'admin' | 'user' | 'editor';
 
 interface BaseItem {
   id: string;

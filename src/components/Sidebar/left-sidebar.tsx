@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Icon } from './Icon';
-import { SidebarItem, Permission } from './types';
+import { Icon } from '../../config/icons';
+import { SidebarItem, Permission } from '../../types/types';
 import './Sidebar.scss';
 
 interface SidebarProps {
