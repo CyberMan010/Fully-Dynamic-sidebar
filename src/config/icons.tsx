@@ -30,7 +30,7 @@ interface IconProps {
   
   export const Icon: React.FC<IconProps> = ({ name, className = '', size = 24 }) => (
     <img 
-      src={`public/${name}.svg`} 
+      src={`/${name}.svg`} 
       alt={`${name} icon`}
       width={size}
       height={size}
