@@ -276,7 +276,7 @@ align-items: center;
 
     .search-container {
       width: 100%;
-      position: relative;
+      position: static;
       border-radius: 8px;
       background-color: rgba(239, 246, 255, 0.2);
       display: flex;
@@ -292,18 +292,30 @@ align-items: center;
       gap: 8px;
 
       .search-icon {
+        position: relative;
         width: 24px;
         height: 24px;
         flex-shrink: 0;
+      z-index: 2;
       }
 
       input {
+        position: absolute;
+        left: 44px;
+        right: 76px;
+        top: 0;
+        bottom: 0;
+        width: auto;
+        height: 100%;
+        z-index: 1;
         flex: 1;
         background: none;
         border: none;
         outline: none;
         color: #fff;
         font-size: 16px;
+        cursor: text;
+
         
         &::placeholder {
           color: #eff6ff;
@@ -311,11 +323,10 @@ align-items: center;
       }
 
       .cmd-icons {
-        display: flex;
-        gap: 4px;
-        align-items: center;
         position: relative;
-        right: 20px;
+        z-index: 2;
+        right: 0;
+        margin-left: auto;
       }
 
       .cmdIcon,
