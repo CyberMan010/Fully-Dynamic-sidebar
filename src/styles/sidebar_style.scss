@@ -2,57 +2,55 @@
 body {
   margin: 0;
   line-height: normal;
-};
+}
 .sidebar {
-  font-size: 29.24px;
-  line-height: 45.69px;
-  width: 320px;
+  display: inline-flex;
   height: 100vh;
-  top: 20px;
-  left: 296px;
-  border-radius: 16px;
+  width: 320px;
   padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
   background-color: #172554;
   color: #fff;
-  display: flex;
-  flex-direction: column;
+  border-radius: 16px;
   transition: width 0.3s ease;
-  overflow-x: hidden;
+  box-sizing: border-box;
+  overflow: hidden;
 
   &.collapsed {
     width: 108px;
-    display: flex;
-    padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 28px;
-    flex: 1 0 0;
-    align-self: stretch;
-
+    padding: 6px 12px;
+    align-items: center;
+    
     .header {
-      width: 76px;
-      height: 68.71px;
-      padding: 6px 12px;
-      border-radius: 12px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 76px; 
+  background: #0C1A46;
+  padding: 1px;
+  border-radius: 12px;
       .logo-container {
-        border-radius: 12px;
-        background: #0C1A46;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 60px;
-        height: 60px;
-        align-self: center;
-        transition: all 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0; 
+  margin: 0 auto; 
+
+        .logoIcon {
+          width: 40px;
+          height: 40px;
+        }
       }
 
-      .logo {
-        width: 39.78px;
-        height: 42.087px;
+      .logoIcon {
+        width: 39.8px;
+        height: 42.1px;
       }
 
       .app-name,
@@ -69,20 +67,89 @@ body {
 
       .toggle {
         position: absolute;
-        left: 150px;
+        left: 220px;
         top: 39px;
-        display: flex;
         width: 28px;
         height: 28px;
+      
+        border-radius: 50%;
+        display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        z-index: 1;
 
         img {
           width: 28px;
           height: 28px;
         }
       }
+    }
+
+    .search {
+      padding: 1px;
+      margin-left: 16px;
+      
+      .searchBar {
+        width: 76px;
+        justify-content: center;  
+        padding: 8px 12px;
+        margin-left: -3px;
+
+        input,
+        .cmd-icons {
+          display: none;
+        }
+
+        .searchNormalIcon {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+
+    .menu {
+      align-items: center;
+      
+      .menu-item {
+        width: 76px;
+        padding: 8px 12px;
+        justify-content: center;
+        border-radius: 8px;
+
+        &:hover {
+          background: rgba(239, 246, 255, 0.2);
+        }
+
+        &.active {
+          background: #1D4ED8;
+        }
+
+        .menu-icon {
+          margin: 0;
+        }
+
+        .menu-text,
+        .add-sign-icon {
+          display: none;
+        }
+      }
+    }
+
+    .mainMenuContanir {
+      align-items: center;
+    }
+
+    .navMenu {
+      align-items: center;
+    }
+
+    .sideMenuButton,
+    .sideMenuButton1,
+    .sideMenuButtonPlaceholder {
+      justify-content: center;
+      align-items: center;
+      width: 76px;
     }
   }
 
@@ -99,37 +166,35 @@ body {
   }
 
   .header {
-    width: 294px;
-    height: 68.71px;
-    padding: 6px 12px;
-    border-radius: 12px;
     display: flex;
+    padding: 6px 12px;
     justify-content: space-between;
     align-items: center;
+    align-content: center;
+    row-gap: 10px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    border-radius: 12px;
     background-color: #0c1a46;
 
     .logo-container {
       display: flex;
       align-items: center;
-      width: 294px;
-      height: 68.71px;
+      gap: 10px;
       padding: 7.31px;
       transition: all 0.3s ease;
 
       .logo {
         width: 39.78px;
         height: 42.087px;
-        margin-left: 7.31px;
         cursor: pointer;
       }
 
       .app-name {
-        margin-left: 10px;
         font-weight: 500;
         font-family: Cairo;
         font-size: 29.241px;
         line-height: 45.69px;
-        padding: 7.31px;
         cursor: pointer;
       }
     }
@@ -146,72 +211,79 @@ body {
 
   .search {
     padding-top: 16px;
+    width: 100%;
 
     .search-container {
-      display: flex;
-      padding: 8px 12px;
-      align-items: center;
+      width: 100%;
+      position: relative;
       border-radius: 8px;
-      margin-bottom: 80px;
-      background: rgba(239, 246, 255, 0.2);
-      transition: all 0.3s ease;
+      background-color: rgba(239, 246, 255, 0.2);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      box-sizing: border-box;
+      text-align: left;
+      font-size: 16px;
+      color: #eff6ff;
+      font-family: Cairo;
+      gap: 8px;
 
       .search-icon {
         width: 24px;
         height: 24px;
-        margin-right: 10px;
         flex-shrink: 0;
-        padding-left: 12px;
       }
 
       input {
-        flex-grow: 1;
+        flex: 1;
         background: none;
         border: none;
         outline: none;
         color: #fff;
-        font-size: 14px;
-
+        font-size: 16px;
+        
         &::placeholder {
-          color: #bbb;
+          color: #eff6ff;
         }
       }
 
       .cmd-icons {
         display: flex;
-        gap: 8px;
-        padding: 2.5px;
+        gap: 4px;
+        align-items: center;
+      }
 
-        .icon {
+      .cmdIcon,
+      .cmdIcon1 {
+        display: flex;
+        width: 23px;
+        height: 23px;
+        padding: 2.5px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 4px;
+        background-color: rgba(23, 37, 84, 0.6);
+
+        img {
           width: 24px;
           height: 24px;
-          cursor: pointer;
-        }
-      }
-    }
-
-    &.collapsed {
-      .search-container {
-        justify-content: center;
-        width: 76px;
-
-        input,
-        .cmd-icons {
-          display: none;
         }
       }
     }
   }
 
   .main-menu-text {
-    width: 100%;
+    width: calc(100% - 48px);
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 0px 24px;
-    margin-bottom: 16px; /* Add margin-bottom to create space */
+    padding: 0;
+    margin: 74.65px 24px 16px 24px;
     box-sizing: border-box;
     text-align: left;
     font-size: 18px;
@@ -220,41 +292,51 @@ body {
   }
 
   .menu {
-    list-style: none;
-    padding: 0;
-    margin: 0 24px;
+    margin-top: 0;
+    padding: 0 24px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: calc(100vh - 220px);
     overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(23, 37, 84, 0.8);
 
     &::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      margin: 4px 0;
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 16px;
+      border-radius: 3px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
     }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: rgba(23, 37, 84, 0.8);
-      border-radius: 16px;
+    &:not(:hover)::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     .menu-item {
       display: flex;
+      width: 100%;
       padding: 8px 12px;
       align-items: center;
       gap: 12px;
-      flex: 1 0 0;
       cursor: pointer;
       transition: background 0.2s ease;
       border-radius: 8px;
-      margin-top: 6px;
-      margin-right: 12px;
-      margin-left: 12px;
+      margin: 0;
+      box-sizing: border-box;
 
       &:hover {
         background: rgba(239, 246, 255, 0.2);
@@ -267,24 +349,34 @@ body {
       .menu-icon {
         width: 24px;
         height: 24px;
-        margin-right: 20px;
+        flex-shrink: 0;
       }
 
       .menu-text {
+        flex: 1;
         font-size: 16px;
         font-weight: 500;
         line-height: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .add-sign-icon {
-        margin-left: auto;
         width: 20px;
         height: 20px;
+        flex-shrink: 0;
+        margin-left: auto;
         display: flex;
         justify-content: center;
         align-items: center;
       }
     }
+  }
+
+  &.collapsed .menu {
+    max-height: calc(100vh - 180px);
+    padding: 0;
   }
 }
 
@@ -345,7 +437,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   align-content: center;
   padding: 6px 12px;
@@ -355,6 +447,7 @@ body {
   width: 24px;
   position: relative;
   height: 24px;
+  
 }
 
 .users {
@@ -371,49 +464,31 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
-}
-.cmdIcon {
-  border-radius: 4px;
-  background-color: rgba(23, 37, 84, 0.6);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 2.5px;
-  width: 24px;
-  height: 24px;
-  box-sizing: border-box;
+  gap: 12px;
 }
 
-.cmdIcon1 {
-  border-radius: 4px;
-  background-color: rgba(23, 37, 84, 0.6);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 2.5px;
-  width: 24px;
-  height: 24px;
-  box-sizing: border-box;
-}
-
-.users1 {
+.commandIcon {
+  width: 18px;
   position: relative;
-  line-height: 25px;
-  font-weight: 500;
+  height: 18px;
 }
 
+.cmdIcon,
 .cmdIcon1 {
+  width: 24px;
+  height: 24px;
   border-radius: 4px;
   background-color: rgba(23, 37, 84, 0.6);
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 2.5px;
+  padding: 3px;
   box-sizing: border-box;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .cmd {
@@ -423,6 +498,12 @@ body {
   justify-content: flex-end;
   gap: 6px;
   font-size: 18px;
+}
+
+.users1 {
+  position: relative;
+  line-height: 25px;
+  font-weight: 500;
 }
 
 .searchBar {
@@ -474,40 +555,12 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: 8px 12px;
-  gap: 12px;
-}
-
-.sideMenuButton {
-  align-self: stretch;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.sideMenuButtonPlaceholder1 {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
   padding: 8px 12px;
   gap: 12px;
 }
 
-.sideMenuButton1 {
-  align-self: stretch;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.sideMenuButton2 {
+.sideMenuButton {
   align-self: stretch;
   border-radius: 12px;
   display: flex;
@@ -537,9 +590,11 @@ body {
 }
 
 .sideMenuSingle {
+  width: 100%;
+  height: 100%;
+  position: relative;
   border-radius: 16px;
   background-color: #172554;
-  height: 972px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -549,15 +604,73 @@ body {
   gap: 28px;
 }
 
-.sideMenu {
+.statushover {
   position: relative;
+  border-radius: 8px;
+  background-color: rgba(239, 246, 255, 0.2);
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   text-align: left;
-  font-size: 29.24px;
+  font-size: 16px;
   color: #eff6ff;
   font-family: Cairo;
 }
+
+.statusactive {
+  position: relative;
+  border-radius: 8px;
+  background-color: #1d4ed8;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 16px;
+  color: #eff6ff;
+  font-family: Cairo;
+}
+
+.statusdisabled {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  opacity: 0.35;
+  text-align: left;
+  font-size: 16px;
+  color: #eff6ff;
+  font-family: Cairo;
+}
+
+[class*='Icon'] {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.home2Icon,
+.profile2userIcon,
+.hierarchySquare3Icon,
+.receiptSearchIcon,
+.arrangeSquareIcon,
+.briefcaseIcon,
+.userOctagonIcon,
+.messageQuestionIcon,
+.tradeIcon,
+.personalcardIcon,
+.moneySendIcon,
+.bookIcon,
+.keySquareIcon,
+.setting3Icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+
