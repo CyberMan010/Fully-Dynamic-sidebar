@@ -364,6 +364,8 @@ margin-top: 16px; /* Reduced margin-top from 74.65px to 16px */
 }
 
   .menu {
+    max-height: calc(100vh - 80px);
+
     width: 294px;
     height: 786.29px;
     display: flex;
