@@ -110,7 +110,8 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
         </div>
       </div>
     </div>
-      {isExpanded && <div className="main-menu-text">Main Menu</div>}
+      {isExpanded &&
+       <div className="main-menu-text">Main Menu</div>}
       <div className="menu">
         {filteredItems.map(renderMenuItem)}
       </div>

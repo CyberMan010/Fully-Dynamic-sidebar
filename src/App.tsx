@@ -11,14 +11,14 @@ const App: React.FC = () => {
     console.log("Search query:", query);
   };
 
-  const toggleUserRole = () => {
-    setUserRole((prevRole) => (prevRole === "admin" ? "user" : "admin"));
-  };
+  // const toggleUserRole = () => {
+  //   setUserRole((prevRole) => (prevRole === "admin" ? "user" : "admin"));
+  // };
 
   return (
     <div className="app">
       {/* <button onClick={toggleUserRole}>
-        Switch to {userRole === "admin" ? "User" : "Admin"}
+        {userRole === "admin" ? "User" : "Admin"}
       </button> */}
       <Sidebar
         items={items}
