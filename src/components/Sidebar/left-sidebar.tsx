@@ -4,28 +4,29 @@ import type { SidebarItem, Permission, SubmenuItem, NavItem } from "../../types/
 import { sidebarConfig } from "../../config/config"
 import { Icon } from "../../config/icons"
 import "../../styles/sidebar_style.scss"
+import { Submenu } from "./submenu"
 
 interface SidebarProps {
   userRole: Permission
 }
 
-export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
   const [isExpanded, setIsExpanded] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
   const [debouncedQuery, setDebouncedQuery] = useState("")
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
-  const [expandedSubmenus, setExpandedSubmenus] = useState<string[]>([])
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [isFullyExpanded, setIsFullyExpanded] = useState(true)
+  const [activeSubmenu, setActiveSubmenu] = useState<{
+    id: string
+    title: string
+    sections: any[]
+  } | null>(null)
 
   const toggleSidebar = () => {
     setIsExpanded((prev) => !prev)
     setIsAnimating(true)
-    setIsFullyExpanded(false)
-    setTimeout(() => {
-      setIsAnimating(false)
-      setIsFullyExpanded(true)
-    }, 300)
+    setTimeout(() => setIsAnimating(false), 300)
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,10 +61,32 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
   }
 
   const toggleSubmenu = (itemId: string) => {
-    setExpandedSubmenus((prev) => (prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]))
+    if (activeSubmenu?.id === itemId) {
+      setActiveSubmenu(null)
+      setIsExpanded(true)
+    } else {
+      const item = items.find((i) => i.id === itemId && i.type === "submenu") as SubmenuItem
+      if (item) {
+        setActiveSubmenu({
+          id: item.id,
+          title: item.label,
+          sections: [
+            {
+              title: item.label.toUpperCase(),
+              items: item.items.map((subItem) => ({
+                id: subItem.id,
+                label: subItem.label,
+                icon: subItem.icon,
+              })),
+            },
+          ],
+        })
+        setIsExpanded(false)
+      }
+    }
   }
 
-  const renderMenuItem = (item: SidebarItem, index: number, depth = 0) => {
+  const renderMenuItem = (item: SidebarItem, index: number) => {
     if (item.type === "divider") {
       return <div key={item.id} className="sidebar-divider" />
     }
@@ -74,10 +97,10 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
 
     const isDisabled = item.permissions && !item.permissions.includes(userRole)
     const hasSubmenu = item.type === "submenu"
-    const isSubmenuExpanded = expandedSubmenus.includes(item.id)
+    const isSubmenuOpen = openSubmenu === item.id
 
     return (
-      <div key={item.id} style={{ paddingLeft: `${depth * 16}px` }}>
+      <div key={item.id} className="menu-item-wrapper">
         <div
           className={`menu-item ${item.id === activeItemId ? "active" : ""} ${isDisabled ? "statusdisabled" : ""}`}
           onClick={() => {
@@ -88,23 +111,25 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
               }
             }
           }}
-          style={{
-            transitionDelay: isFullyExpanded ? `${index * 50}ms` : "0ms",
-            opacity: isFullyExpanded ? 1 : 0,
-            transform: isFullyExpanded ? "translateX(0)" : "translateX(-20px)",
-          }}
         >
           <Icon name={item.icon} size={24} className={`menu-icon ${item.icon.toLowerCase().replace(/-/g, "")}Icon`} />
           <span className={`menu-text ${isExpanded ? "visible" : "hidden"}`}>
             {highlightText(item.label, debouncedQuery)}
           </span>
-          {hasSubmenu && (
-            <Icon name="add" size={20} className={`submenu-icon ${isSubmenuExpanded ? "expanded" : ""}`} />
-          )}
+          {hasSubmenu && <Icon name="add" size={20} className={`submenu-icon ${isSubmenuOpen ? "expanded" : ""}`} />}
         </div>
-        {hasSubmenu && isSubmenuExpanded && isExpanded && (
+        {hasSubmenu && isSubmenuOpen && (
           <div className="submenu">
-            {(item as SubmenuItem).items.map((subItem, subIndex) => renderMenuItem(subItem, subIndex, depth + 1))}
+            {(item as SubmenuItem).items.map((subItem, subIndex) => (
+              <div key={subItem.id} className="submenu-item">
+                <Icon
+                  name={subItem.icon}
+                  size={20}
+                  className={`submenu-icon ${subItem.icon.toLowerCase().replace(/-/g, "")}Icon`}
+                />
+                <span className="submenu-text">{subItem.label}</span>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -117,31 +142,51 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
   )
 
   return (
-    <div className={`sidebar ${isExpanded ? "" : "collapsed"} ${isAnimating ? "animating" : ""}`}>
-      <div className="header">
-        <div className="logo-container arenaLogo">
-          <Icon name="Logo Icon" size={32} className="logo logoIcon" />
-          {isExpanded && <div className="app-name logoText">ARENA</div>}
-        </div>
-        <div className="toggle" onClick={toggleSidebar}>
-          <Icon name={isExpanded ? "sidebar-left" : "sidebar-right"} size={24} className="sidebarLeftIcon" />
-        </div>
-      </div>
-
-      <div className={`search ${isExpanded ? "" : "collapsed"}`}>
-        <div className="search-container searchBar">
-          <Icon name="search-normal" className="search-icon searchNormalIcon" />
-          <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearch} />
-          <div className="cmd-icons cmd">
-            <Icon name="cmd-icon" className="cmdIcon" />
-            <Icon name="cmd-icon2" className="cmdIcon1" />
+    <>
+      <div className={`sidebar ${isExpanded ? "" : "collapsed"} ${isAnimating ? "animating" : ""}`}>
+        <div className="header">
+          <div className="logo-container arenaLogo">
+            <Icon name="Logo Icon" size={32} className="logo logoIcon" />
+            {isExpanded && <div className="app-name logoText">ARENA</div>}
+          </div>
+          <div className="toggle" onClick={toggleSidebar}>
+            <Icon name={isExpanded ? "sidebar-left" : "sidebar-right"} size={24} className="sidebarLeftIcon" />
           </div>
         </div>
+
+        <div className={`search ${isExpanded ? "" : "collapsed"}`}>
+          <div className="search-container searchBar">
+            <Icon name="search-normal" className="search-icon searchNormalIcon" />
+            <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearch} />
+            <div className="cmd-icons cmd">
+              <Icon name="cmd-icon" className="cmdIcon" />
+              <Icon name="cmd-icon2" className="cmdIcon1" />
+            </div>
+          </div>
+        </div>
+
+        {isExpanded && <div className="main-menu-text">Main Menu</div>}
+
+        <div className="menu">{filteredItems.map((item, index) => renderMenuItem(item, index))}</div>
       </div>
-
-      {isExpanded && <div className="main-menu-text">Main Menu</div>}
-
-      <div className="menu">{filteredItems.map((item, index) => renderMenuItem(item, index))}</div>
-    </div>
+      {activeSubmenu && (
+        <Submenu
+          title={activeSubmenu.title}
+          sections={activeSubmenu.sections}
+          onClose={() => {
+            setActiveSubmenu(null)
+            setIsExpanded(true)
+          }}
+          storageInfo={
+            activeSubmenu.id === "settings"
+              ? {
+                  used: 18.2,
+                  total: 20,
+                }
+              : undefined
+          }
+        />
+      )}
+    </>
   )
 }
