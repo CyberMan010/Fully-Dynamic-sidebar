@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+
 body {
   margin: 0;
   line-height: normal;
   overflow: hidden;
-  
 }
 
 .sidebar {
@@ -21,41 +21,6 @@ body {
   white-space: nowrap;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: width, padding;
-  
-
-  .sidebar.collapsed .header .toggle {
-    position: absolute;
-    left: 50%;
-    top: 39px;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: #0C1A46;
-    cursor: pointer;
-    z-index: 1000;
-    transform: translateX(-50%);
-    transition: transform 0.3s ease-in-out;
-  }
-  .sidebar.collapsed .header .toggle img {
-    width: 28px;
-    height: 28px;
-    display: block;
-  }
-
-  .header,
-  .search,
-  .menu,
-  .main-menu-text,
-  .logo-container,
-  .menu-item,
-  .search-container {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
 
   &.collapsed {
     width: 108px;
@@ -64,32 +29,28 @@ body {
     
     .header {
       display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 76px; 
-  background: #0C1A46;
-  padding: 1px;
-  border-radius: 12px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 76px; 
+      background: #0C1A46;
+      padding: 1px;
+      border-radius: 12px;
+
       .logo-container {
         display: flex !important;
-  flex-direction: column;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100%;
-  height: 100%;
-  padding: 0; 
-  margin: 0 auto; 
+        flex-direction: column;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100%;
+        height: 100%;
+        padding: 0; 
+        margin: 0 auto; 
 
         .logoIcon {
           width: 40px;
           height: 40px;
         }
-      }
-
-      .logoIcon {
-        width: 39.8px;
-        height: 42.1px;
       }
 
       .app-name,
@@ -109,15 +70,11 @@ body {
         left: 135px;
         top: 39px;
         display: flex;
-width: 28px;
-height: 28px;
-justify-content: center;
-align-items: center;
-      
-        border-radius: 50%;
-        display: flex;
+        width: 28px;
+        height: 28px;
         justify-content: center;
         align-items: center;
+        border-radius: 50%;
         cursor: pointer;
         z-index: 1;
 
@@ -156,8 +113,6 @@ align-items: center;
       align-items: center;
       margin: 0 auto;
       
-      
-      
       .menu-item {
         width: 76px;
         padding: 8px;
@@ -177,54 +132,41 @@ align-items: center;
         }
 
         .menu-text,
-        .add-sign-icon {
+        .add-sign-icon,
+        .submenu-icon {
           display: none;
         }
       }
-    }
-
-    .mainMenuContanir {
-      align-items: center;
-    }
-
-    .navMenu {
-      align-items: center;
-    }
-
-    .sideMenuButton,
-    .sideMenuButton1,
-    .sideMenuButtonPlaceholder {
-      justify-content: center;
-      align-items: center;
-      width: 76px;
-    }
-
-
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    .header,
-    .search,
-    .menu-item {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .menu-text,
-    .app-name,
-    .cmd-icons {
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      .submenu {
+        display: none;
+      }
     }
   }
 
-  .header-menu {
-    font-family: Cairo;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 25px;
-    padding: 0px 24px;
-    width: 99.97px;
-    height: 41.93px;
-    width: 294px;
+  &.animating {
+    .menu-item {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.3s ease;
+    }
+  }
+
+  &:not(.collapsed) {
+    .menu-item {
+      opacity: 0;
+      transform: translateX(-20px);
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{$i * 50}ms;
+        }
+      }
+    }
+  }
+
+  &:not(.collapsed):not(.animating) {
+    .menu-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .header {
@@ -277,13 +219,13 @@ align-items: center;
 
     .search-container {
       width: 100%;
-      position: static;
+      position: relative; // Updated: position changed to relative
       border-radius: 8px;
       background-color: rgba(239, 246, 255, 0.2);
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start; // Updated: justify-content changed to flex-start
       padding: 8px 12px;
       box-sizing: border-box;
       text-align: left;
@@ -297,26 +239,18 @@ align-items: center;
         width: 24px;
         height: 24px;
         flex-shrink: 0;
-      z-index: 2;
+        z-index: 2;
       }
 
       input {
-        position: absolute;
-        left: 44px;
-        right: 76px;
-        top: 0;
-        bottom: 0;
-        width: auto;
-        height: 100%;
-        z-index: 1;
         flex: 1;
         background: none;
         border: none;
         outline: none;
         color: #fff;
         font-size: 16px;
-        cursor: text;
-
+        padding: 0 8px; // Added padding
+        width: calc(100% - 72px); // Adjusted width
         
         &::placeholder {
           color: #eff6ff;
@@ -324,10 +258,9 @@ align-items: center;
       }
 
       .cmd-icons {
-        position: relative;
-        z-index: 2;
-        right: 0;
-        margin-left: auto;
+        display: flex; // Updated: display changed to flex
+        align-items: center;
+        gap: 4px; // Updated: gap value changed
       }
 
       .cmdIcon,
@@ -355,19 +288,17 @@ align-items: center;
     padding: 0 24px 0 24px;
     font-family: Cairo;
     color: var(--Blue-50, #EFF6FF);
-font-variant-numeric: lining-nums proportional-nums;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: 25px;  
-margin-top: 16px; 
-
-}
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;  
+    margin-top: 16px; 
+  }
 
   .menu {
     max-height: calc(100vh - 80px);
     overflow-x: hidden;
-
     width: 294px;
     height: 786.29px;
     display: flex;
@@ -378,7 +309,6 @@ margin-top: 16px;
     box-sizing: border-box;
     overflow-y: auto;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
 
     &::-webkit-scrollbar {
       width: 6px;
@@ -406,17 +336,16 @@ margin-top: 16px;
 
     .menu-item {
       width: 294px;
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 12px;
-    margin: 4px 0;
-    border-radius: 8px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      margin: 4px 0;
+      border-radius: 8px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
       &:hover {
         background: rgba(239, 246, 255, 0.2);
@@ -440,7 +369,6 @@ margin-top: 16px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        
       }
 
       .add-sign-icon {
@@ -452,12 +380,37 @@ margin-top: 16px;
         justify-content: center;
         align-items: center;
       }
+
+      .submenu-icon {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+      }
+
+      &.active > .submenu-icon {
+        transform: rotate(90deg);
+      }
+    }
+
+    .submenu {
+      margin-left: 12px;
+      .menu-item {
+        padding-left: 36px;
+      }
     }
   }
 
   &.collapsed .menu {
     max-height: calc(100vh - 180px);
     padding: 0;
+    .submenu {
+      display: none;
+    }
+
+    .menu-item {
+      .submenu-icon {
+        display: none;
+      }
+    }
   }
 }
 
@@ -528,7 +481,6 @@ margin-top: 16px;
   width: 24px;
   position: relative;
   height: 24px;
-  
 }
 
 .users {
@@ -599,8 +551,6 @@ margin-top: 16px;
   font-size: 16px;
 }
 
-
-
 .statusdisabled {
   position: relative;
   width: 100%;
@@ -639,5 +589,4 @@ margin-top: 16px;
   height: 24px;
   position: relative;
 }
-
 
