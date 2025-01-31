@@ -1,12 +1,12 @@
 import type React from "react"
 import { type FunctionComponent, useState, useEffect } from "react"
-import type { SidebarItem } from "../../types/types"
+import type { SidebarItem, Permission, SubmenuItem, NavItem } from "../../types/types"
 import { sidebarConfig } from "../../config/config"
 import { Icon } from "../../config/icons"
 import "../../styles/sidebar_style.scss"
 
 interface SidebarProps {
-  userRole: "admin" | "user"
+  userRole: Permission
 }
 
 export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
@@ -64,12 +64,16 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
   }
 
   const renderMenuItem = (item: SidebarItem, index: number, depth = 0) => {
+    if (item.type === "divider") {
+      return <div key={item.id} className="sidebar-divider" />
+    }
+
     if (debouncedQuery && !item.label.toLowerCase().includes(debouncedQuery.toLowerCase())) {
       return null
     }
 
     const isDisabled = item.permissions && !item.permissions.includes(userRole)
-    const hasSubmenu = item.submenu && item.submenu.length > 0
+    const hasSubmenu = item.type === "submenu"
     const isSubmenuExpanded = expandedSubmenus.includes(item.id)
 
     return (
@@ -95,19 +99,22 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
             {highlightText(item.label, debouncedQuery)}
           </span>
           {hasSubmenu && (
-            <Icon name={isSubmenuExpanded ? "chevron-down" : "chevron-right"} size={20} className="submenu-icon" />
+            <Icon name="add" size={20} className={`submenu-icon ${isSubmenuExpanded ? "expanded" : ""}`} />
           )}
         </div>
         {hasSubmenu && isSubmenuExpanded && isExpanded && (
           <div className="submenu">
-            {item.submenu!.map((subItem, subIndex) => renderMenuItem(subItem, subIndex, depth + 1))}
+            {(item as SubmenuItem).items.map((subItem, subIndex) => renderMenuItem(subItem, subIndex, depth + 1))}
           </div>
         )}
       </div>
     )
   }
 
-  const filteredItems = items.filter((item) => item.label.toLowerCase().includes(debouncedQuery.toLowerCase()))
+  const filteredItems = items.filter(
+    (item): item is NavItem =>
+      item.type !== "divider" && item.label.toLowerCase().includes(debouncedQuery.toLowerCase()),
+  )
 
   return (
     <div className={`sidebar ${isExpanded ? "" : "collapsed"} ${isAnimating ? "animating" : ""}`}>
@@ -138,4 +145,3 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
     </div>
   )
 }
-
