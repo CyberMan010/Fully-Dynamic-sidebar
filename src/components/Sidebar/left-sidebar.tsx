@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { SidebarItem } from '../../types/types';
 import { sidebarConfig } from '../../config/config';
 import { Icon } from '../../config/icons';
@@ -14,19 +14,17 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [activeItemId, setActiveItemId] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
-
-
-
+  const [isFullyExpanded, setIsFullyExpanded] = useState(true);
 
   const toggleSidebar = () => {
-    setIsExpanded((prev) => !prev); // Instantly update the state
+    setIsExpanded((prev) => !prev);
     setIsAnimating(true);
+    setIsFullyExpanded(false);
     setTimeout(() => {
       setIsAnimating(false);
-    }, 250); // Animation duration in CSS
+      setIsFullyExpanded(true);
+    }, 300);
   };
-  
-
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -57,7 +55,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
     );
   };
 
-  const renderMenuItem = (item: SidebarItem) => {
+  const renderMenuItem = (item: SidebarItem, index: number) => {
     if (debouncedQuery && !item.label.toLowerCase().includes(debouncedQuery.toLowerCase())) {
       return null;
     }
@@ -69,31 +67,33 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
         key={item.id}
         className={`menu-item ${item.id === activeItemId ? 'active' : ''} ${isDisabled ? 'statusdisabled' : ''}`}
         onClick={() => !isDisabled && setActiveItemId(item.id)}
+        style={{
+          transitionDelay: isFullyExpanded ? `${index * 50}ms` : '0ms',
+          opacity: isFullyExpanded ? 1 : 0,
+          transform: isFullyExpanded ? 'translateX(0)' : 'translateX(-20px)',
+        }}
       >
         <Icon 
           name={item.icon} 
           size={24} 
           className={`menu-icon ${item.icon.toLowerCase().replace(/-/g, '')}Icon`} 
         />
-       {isExpanded && !isAnimating && (
-  <span className="menu-text">
-    {highlightText(item.label, debouncedQuery)}
-  </span>
-)}
-
+        <span className={`menu-text ${isExpanded ? 'visible' : 'hidden'}`}>
+          {highlightText(item.label, debouncedQuery)}
+        </span>
         {item.type === 'submenu' && (
           <Icon name="add" size={20} className="add-sign-icon" />
         )}
       </div>
     );
   };
-  
+
   const filteredItems = items.filter((item) =>
     item.label.toLowerCase().includes(debouncedQuery.toLowerCase())
   );
 
   return (
-    <div className={`sidebar ${isExpanded ? '' : 'collapsed'}`}>
+    <div className={`sidebar ${isExpanded ? '' : 'collapsed'} ${isAnimating ? 'animating' : ''}`}>
       <div className="header">
         <div className="logo-container arenaLogo"> 
           <Icon name="Logo Icon" size={32} className="logo logoIcon" /> 
@@ -117,7 +117,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
             value={searchQuery}
             onChange={handleSearch}
           />
-          <div className="cmd-icons cmd"> {/* Added cmd class */}
+          <div className="cmd-icons cmd">
             <Icon name="cmd-icon" className="cmdIcon" />
             <Icon name="cmd-icon2" className="cmdIcon1" />
           </div>
@@ -127,10 +127,8 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({ userRole }) => {
       {isExpanded && <div className="main-menu-text">Main Menu</div>}
   
       <div className="menu">
-  {filteredItems.map(renderMenuItem)}
-</div>
-
+        {filteredItems.map((item, index) => renderMenuItem(item, index))}
+      </div>
     </div>
   );
-  
 };
