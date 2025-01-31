@@ -5,6 +5,7 @@ body {
   overflow: hidden;
   
 }
+
 .sidebar {
   height: 100vh;
   display: inline-flex;
@@ -12,15 +13,13 @@ body {
   padding: 16px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px; /* Reduced gap from 28px to 16px */
+  gap: 16px;
   background-color: #172554;
   color: #fff;
   border-radius: 16px;
-  transition: width 0.1s ease;
   box-sizing: border-box;
   white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateZ(0);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: width, padding;
   
 
@@ -212,7 +211,7 @@ align-items: center;
     .menu-text,
     .app-name,
     .cmd-icons {
-      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
@@ -361,7 +360,7 @@ font-size: 18px;
 font-style: normal;
 font-weight: 500;
 line-height: 25px;  
-margin-top: 16px; /* Reduced margin-top from 74.65px to 16px */
+margin-top: 16px; 
 
 }
 
@@ -441,6 +440,7 @@ margin-top: 16px; /* Reduced margin-top from 74.65px to 16px */
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        
       }
 
       .add-sign-icon {
