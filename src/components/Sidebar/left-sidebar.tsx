@@ -22,11 +22,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
     title: string
     sections: any[]
   } | null>(null)
+  const [isFullyExpanded, setIsFullyExpanded] = useState(true)
 
   const toggleSidebar = () => {
     setIsExpanded((prev) => !prev)
     setIsAnimating(true)
-    setTimeout(() => setIsAnimating(false), 300)
+    setIsFullyExpanded(false)
+    setTimeout(() => {
+      setIsAnimating(false)
+      setIsFullyExpanded(true)
+    }, 300)
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +69,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
     if (activeSubmenu?.id === itemId) {
       setActiveSubmenu(null)
       setIsExpanded(true)
+      setIsAnimating(true)
+      setIsFullyExpanded(false)
+      setTimeout(() => {
+        setIsAnimating(false)
+        setIsFullyExpanded(true)
+      }, 300)
     } else {
       const item = items.find((i) => i.id === itemId && i.type === "submenu") as SubmenuItem
       if (item) {
@@ -82,6 +93,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
           ],
         })
         setIsExpanded(false)
+        setIsAnimating(true)
+        setIsFullyExpanded(false)
+        setTimeout(() => {
+          setIsAnimating(false)
+          setIsFullyExpanded(true)
+        }, 300)
       }
     }
   }
@@ -110,6 +127,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
                 toggleSubmenu(item.id)
               }
             }
+          }}
+          style={{
+            transitionDelay: isFullyExpanded ? `${index * 50}ms` : "0ms",
+            opacity: isFullyExpanded ? 1 : 0,
+            transform: isFullyExpanded ? "translateX(0)" : "translateX(-20px)",
           }}
         >
           <Icon name={item.icon} size={24} className={`menu-icon ${item.icon.toLowerCase().replace(/-/g, "")}Icon`} />
