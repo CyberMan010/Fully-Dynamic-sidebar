@@ -26,12 +26,18 @@ export type IconName =
   | 'cmd-icon2'
   | '2 Arrow - Right'
   | 'logoCard'
-  | 'Notifications'
+  | 'Notification'
   | 'language'
   | 'Profile'
   | 'filter'
   | 'list-view'
-  | 'card-view';
+  | 'card-view'
+  | 'folder-2'
+  | 'note-text'
+  | 'Home'
+  | 'Arrow - Left 2'
+  | 'Arrow - Right 2'
+  | 'search-normal2';
  
 
 
@@ -41,7 +47,7 @@ interface IconProps {
     size?: number;
   }
   
-  export const Icon: React.FC<IconProps> = ({ name, className = '', size = 24 }) => (
+  export const Icon: React.FC<IconProps> = ({ name, className = '', size = 24, }) => (
     <img 
       src={`/${name}.svg`} 
       alt={`${name} icon`}

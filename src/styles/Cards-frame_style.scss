@@ -1,6 +1,27 @@
 .cards-frame {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem;
+  grid-template-columns: repeat(4, 249.5px); // Fixed width for 4 cards
+  gap: 24px;
+  padding: 24px 0; // Remove horizontal padding
+  width: 1038px; // Match toolbar width
+  margin: 0; // Remove margin
+  overflow: visible;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 4px 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
 }

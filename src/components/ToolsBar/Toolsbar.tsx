@@ -1,4 +1,4 @@
-import type React from "react"
+import React from "react"
 import "../../styles/ToolsBar_style.scss"
 import { Icon } from "../../config/icons"
 
@@ -12,29 +12,43 @@ export const ToolsBar: React.FC<ToolsBarProps> = ({ view, onViewChange, onSearch
   return (
     <div className="tools-bar">
       <div className="tools-bar__left">
-        <div className="tools-bar__view-toggle">
-          <button className={view === "card" ? "active" : ""} onClick={() => onViewChange("card")}>
-            <Icon name="card-view"  width={24} height={24} />
-          </button>
-          <button className={view === "list" ? "active" : ""} onClick={() => onViewChange("list")}>
-            <Icon name="list-view" width={24} height={24} />
-          </button>
-        </div>
+        <button 
+          className={`view-button ${view === "card" ? "active" : ""}`}
+          onClick={() => onViewChange("card")}
+          aria-label="Card view"
+        >
+          <Icon name="card-view" size={24} />
+          <span>Card View</span>
+        </button>
+        <button 
+          className={`view-button ${view === "list" ? "active" : ""}`}
+          onClick={() => onViewChange("list")}
+          aria-label="List view"
+        >
+          <Icon name="list-view" size={24} />
+          <span>List View</span>
+        </button>
+      </div>
+      <div className="tools-bar__center">
         <div className="tools-bar__search">
-          <Icon name="search-normal"  width={24} height={24} />
-          <input type="text" placeholder="Search..." onChange={(e) => onSearch(e.target.value)} />
+          <Icon name="search-normal2" size={24} className="icon"/>
+          <input 
+            type="text" 
+            placeholder="Search" 
+            onChange={(e) => onSearch(e.target.value)} 
+          />
         </div>
       </div>
       <div className="tools-bar__right">
-        <button className="tools-bar__filter-button">
-          <Icon name="filter"  width={24} height={24} />
-        </button>
-        <button className="tools-bar__add-button">
-          <Icon name="add" width={24} height={24} />
-          Add New
-        </button>
-      </div>
+  <button className="view-button" aria-label="Filter">
+    <Icon name="filter" size={30} />
+    <span>Filter</span>
+  </button>
+  <button className="tools-bar__add-button">
+    <Icon name="add" size={24} />
+    Add New
+  </button>
+</div>
     </div>
   )
 }
-

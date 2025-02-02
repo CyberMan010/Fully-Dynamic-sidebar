@@ -3,6 +3,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    background: var(--Dark-Primary-Buttons-White, #FFF);
+    border: 1px solid var(--Gray-Colors-Gray-10, #EBECF2);
+    border-radius: 8px;
+
   
     &__info {
       font-size: 0.875rem;

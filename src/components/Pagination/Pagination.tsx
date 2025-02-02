@@ -1,5 +1,6 @@
 import type React from "react"
 import "../../styles/Pagination_style.scss"
+import { Icon } from "../../config/icons"
 
 interface PaginationProps {
     currentPage: number
@@ -19,7 +20,7 @@ interface PaginationProps {
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <img src="/icons/chevron-left.svg" alt="Previous" width={16} height={16} />
+            <Icon name="Arrow - Left 2" width={24} height={24} />
           </button>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <button
@@ -35,7 +36,7 @@ interface PaginationProps {
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            <img src="/icons/chevron-right.svg" alt="Next" width={16} height={16} />
+           <Icon name="Arrow - Right 2" width={24} height={24} />
           </button>
         </div>
       </div>

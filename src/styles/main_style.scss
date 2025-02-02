@@ -1,19 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
 .app {
   display: flex;
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+  font-family: 'cairo';
 }
 
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #f3f4f6; 
-  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: margin-left;
+  background-color: #f3f4f6;
+  transition: margin-left 0.3s ease;
 
   &.shifted {
     margin-left: 320px; // Width of the submenu
+  }
+}
+.landing-page {
+  &__content-wrapper {
+    max-width: 1038px;
+    margin: 0 auto;
+    height: 564px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 200px); // Adjust based on your header height
   }
 }
   // Import other component-specific styles
