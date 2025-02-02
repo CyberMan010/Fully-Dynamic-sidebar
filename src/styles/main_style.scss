@@ -15,6 +15,7 @@
     margin-left: 320px; // Width of the submenu
   }
 }
+
 .landing-page {
   &__content-wrapper {
     max-width: 1038px;
@@ -28,11 +29,10 @@
     height: calc(100vh - 200px); // Adjust based on your header height
   }
 }
-  // Import other component-specific styles
-  @import './Header_style.scss';
-  @import './ToolsBar_style.scss';
-  @import './Cards-frame_style.scss';
-  @import './Cards.scss';
-  @import './Pagination_style.scss';
-  
-  
+
+// Import other component-specific styles
+@import './Header_style.scss';
+@import './ToolsBar_style.scss';
+@import './Cards-frame_style.scss';
+@import './Cards.scss';
+@import './Pagination_style.scss';

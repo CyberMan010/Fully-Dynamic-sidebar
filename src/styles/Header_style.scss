@@ -10,12 +10,10 @@
   }
 
   &__title {
-    color: var(--Primary-Colors-Dark-Blue, #142452);
-    font-variant-numeric: lining-nums proportional-nums;
+    color: #142452;
     margin-left: 55px;
-    font-family: Cairo;
+    font-family: Cairo, sans-serif;
     font-size: 14px;
-    font-style: normal;
     font-weight: 600;
     line-height: 20px;
     flex: 1;
@@ -27,49 +25,78 @@
   }
 
   &__button {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
     background: none;
     border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    color: #374151;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    font-style: normal;
-    transition: background-color 0.2s;
 
-    &:hover {
-      background-color: #f3f4f6;
+    // Profile dropdown styles
+    &.profile-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #142452;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative; // Added for dropdown positioning
+
+      .profile-dropdown__icon {
+        width: 40px;
+        height: 40px;
+        background-color: #ebecf2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          fill: #142452; // Color for the profile icon
+        }
+      }
+
+      .profile-dropdown__name {
+        font-family: Cairo, sans-serif;
+      }
+
+      .toggle-icon {
+        background: none; // Remove background for the toggle icon
+        border-radius: 0; // Remove circular shape
+        width: auto; // Reset width
+        height: auto; // Reset height
+      }
+
+      &:hover {
+        .profile-dropdown__icon {
+          background-color: #e5e7eb;
+        }
+      }
+
+      .profile-dropdown__menu {
+        position: absolute;
+        top: 100%; // Position below the profile button
+        right: 0;
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        min-width: 150px;
+        margin-top: 8px;
+
+        .profile-dropdown__option {
+          padding: 0.75rem 1rem;
+          cursor: pointer;
+          font-family: Cairo, sans-serif;
+          font-size: 14px;
+          color: #142452;
+
+          &:hover {
+            background-color: #f3f4f6;
+          }
+        }
+      }
     }
-
-    img {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-  }
-
-  // Profile button styling
-  &__button.profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
-  .profile__icon {
-    width: 40px;
-    height: 40px;
-    background: #ebecf2; // Circle background
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }

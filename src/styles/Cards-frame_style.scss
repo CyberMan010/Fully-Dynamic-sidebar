@@ -1,12 +1,13 @@
 .cards-frame {
   display: grid;
-  grid-template-columns: repeat(4, 249.5px); // Fixed width for 4 cards
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr); // Use fractional units for responsive width
+  gap: 24px; // Add gap between cards
   padding: 24px 0; // Remove horizontal padding
-  width: 1038px; // Match toolbar width
-  margin: 0; // Remove margin
+  width: 100%; // Take full width of its container
+  max-width: 1038px; // Match the width of the toolbar
+  margin: 0 auto; // Center the frame
   overflow: visible;
-
+  
   &::-webkit-scrollbar {
     width: 6px;
   }
