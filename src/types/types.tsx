@@ -1,33 +1,33 @@
-// types.tsx
+import type { IconName } from "../config/icons"
 
-import { IconName } from '../config/icons';
-export type ItemType = 'link' | 'submenu' | 'divider';
-export type Permission = 'admin' | 'user' | 'editor';
+export type ItemType = "link" | "submenu" | "divider"
+export type Permission = "admin" | "user" | "editor"
 
 export interface BaseItem {
-  id: string;
-  type: ItemType;
-  permissions?: Permission[];
+  id: string
+  type: ItemType
+  permissions?: Permission[]
 }
 
 export interface NavItem extends BaseItem {
-  type: 'link' | 'submenu';
-  label: string;
-  icon: IconName;
+  type: "link" | "submenu"
+  label: string
+  icon: IconName
 }
 
 export interface LinkItem extends NavItem {
-  type: 'link';
-  href: string;
+  type: "link"
+  href: string
 }
 
 export interface SubmenuItem extends NavItem {
-  type: 'submenu';
-  items: SidebarItem[];
+  type: "submenu"
+  items: SidebarItem[]
 }
 
 export interface DividerItem extends BaseItem {
-  type: 'divider';
+  type: "divider"
 }
 
-export type SidebarItem = LinkItem | SubmenuItem | DividerItem;
+export type SidebarItem = LinkItem | SubmenuItem | DividerItem
+
