@@ -1,33 +1,26 @@
-import React, { useState } from "react";
-import { Sidebar } from "./components/Sidebar/left-sidebar";
-import { sidebarConfig } from "./config/config";
-import "./styles/main_style.scss";
+import type React from "react"
+import { useState } from "react"
+import { Sidebar } from "./components/Sidebar/left-sidebar"
+import { LandingPage } from "./components/main-page/Landing-Page"
+import "./styles/main_style.scss"
 
 const App: React.FC = () => {
-  const [userRole, setUserRole] = useState<"admin" | "user">("admin");
-  const items = sidebarConfig[userRole];
+  const [userRole] = useState<"admin" | "user">("admin")
+  const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
-  const handleSearch = (query: string) => {
-    console.log("Search query:", query);
-  };
-
-  // const toggleUserRole = () => {
-  //   setUserRole((prevRole) => (prevRole === "admin" ? "user" : "admin"));
-  // };
+  const handleItemSelect = (itemName: string) => {
+    setSelectedItem(itemName)
+  }
 
   return (
     <div className="app">
-      {/* <button onClick={toggleUserRole}>
-        {userRole === "admin" ? "User" : "Admin"}
-      </button> */}
-      <Sidebar
-        items={items}
-        userRole={userRole}
-        defaultExpanded={true}
-        onSearch={handleSearch}
-      />
+      <Sidebar userRole={userRole} onItemSelect={handleItemSelect} />
+      <main className="main-content">
+        {selectedItem === "Knowledge Base" ? <LandingPage /> : <div>Select an item from the sidebar</div>}
+      </main>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
+

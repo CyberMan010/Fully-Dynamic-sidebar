@@ -1,16 +1,17 @@
 import type React from "react"
-import { type FunctionComponent, useState, useEffect } from "react"
-import type { SidebarItem, Permission, SubmenuItem, NavItem } from "../../types/types"
+import { useState, useEffect } from "react"
+import type { SidebarItem, SubmenuItem, NavItem } from "../../types/types"
 import { sidebarConfig } from "../../config/config"
 import { Icon } from "../../config/icons"
 import "../../styles/sidebar_style.scss"
 import { Submenu } from "./submenu"
 
 interface SidebarProps {
-  userRole: Permission
+  userRole: "admin" | "user"
+  onItemSelect: (itemName: string) => void
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ userRole, onItemSelect }) => {
   const [isExpanded, setIsExpanded] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
   const [debouncedQuery, setDebouncedQuery] = useState("")
@@ -125,6 +126,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
               setActiveItemId(item.id)
               if (hasSubmenu) {
                 toggleSubmenu(item.id)
+              } else if (item.type === "link") {
+                onItemSelect(item.label)
               }
             }
           }}
@@ -143,7 +146,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
         {hasSubmenu && isSubmenuOpen && (
           <div className="submenu">
             {(item as SubmenuItem).items.map((subItem, subIndex) => (
-              <div key={subItem.id} className="submenu-item">
+              <div key={subItem.id} className="submenu-item" onClick={() => onItemSelect(subItem.label)}>
                 <Icon
                   name={subItem.icon}
                   size={20}
@@ -212,3 +215,4 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
     </>
   )
 }
+

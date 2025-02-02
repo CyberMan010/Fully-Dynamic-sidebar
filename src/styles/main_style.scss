@@ -1,0 +1,19 @@
+.app {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f3f4f6;
+  }
+  
+  // Import other component-specific styles
+  @import './Header_style.scss';
+  @import './ToolsBar_style.scss';
+  @import './Cards-frame_style.scss';
+  @import './Cards.scss';
+  @import './Pagination_style.scss';
+  
+  
