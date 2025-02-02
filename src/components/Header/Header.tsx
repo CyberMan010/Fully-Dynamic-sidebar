@@ -1,5 +1,6 @@
 import type React from "react"
 import "../../styles/Header_style.scss"
+import { Icon } from "../../config/icons"
 
 export const Header: React.FC = () => {
     return (
@@ -8,16 +9,16 @@ export const Header: React.FC = () => {
           <h1 className="header__title">Knowledge Base</h1>
           <div className="header__actions">
             <button className="header__button">
-              <img src="/icons/home.svg" alt="Home" width={20} height={20} />
+             <Icon name="Home" size={20} />
             </button>
             <button className="header__button">
-              <img src="/icons/notification.svg" alt="Notifications" width={20} height={20} />
+            <Icon name="Notification" size={20} />
             </button>
             <button className="header__button">
-              <img src="/icons/language.svg" alt="Language" width={20} height={20} />
+            <Icon name="language" size={20} />
             </button>
             <button className="header__button">
-              <img src="/icons/user.svg" alt="User" width={20} height={20} />
+            <Icon name="Profile" size={20} />
             </button>
           </div>
         </div>

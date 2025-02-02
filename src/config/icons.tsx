@@ -23,7 +23,15 @@ export type IconName =
   | 'user-octagon'
   | 'search-normal'
   | 'cmd-icon'
-  | 'cmd-icon2';
+  | 'cmd-icon2'
+  | '2 Arrow - Right'
+  | 'logoCard'
+  | 'Notifications'
+  | 'language'
+  | 'Profile'
+  | 'filter'
+  | 'list-view'
+  | 'card-view';
  
 
 

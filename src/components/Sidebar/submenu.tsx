@@ -1,6 +1,8 @@
 import type React from "react"
 import { Icon } from "../../config/icons"
 import "../../styles/submenu_style.scss"
+import { useState, useEffect } from "react"
+
 
 interface SubmenuSection {
   title: string
@@ -23,12 +25,33 @@ interface SubmenuProps {
 }
 
 export const Submenu: React.FC<SubmenuProps> = ({ title, sections, onClose, storageInfo }) => {
+  const [isVisible, setIsVisible] = useState(false)
+
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setIsVisible(true)
+      // Update parent component state
+      document.querySelector('.main-content')?.classList.add('shifted')
+    })
+  }, [])
+
+  const handleClose = () => {
+    setIsVisible(false)
+    // Remove shifted class before closing
+    document.querySelector('.main-content')?.classList.remove('shifted')
+    setTimeout(() => {
+      onClose()
+    }, 300)
+  }
+
+
   return (
-    <div className="submenu-panel">
+    <div className={`submenu-panel ${isVisible ? 'visible' : ''}`}>
       <div className="submenu-header">
         <div className="header-content">
-          <button onClick={onClose} className="back-button">
-            <Icon name="arrow-left" size={20} />
+          <button onClick={handleClose} className="back-button">
+            <Icon name="2 Arrow - Right" size={20} />
           </button>
           <h2>{title}</h2>
         </div>

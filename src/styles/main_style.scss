@@ -1,14 +1,21 @@
 .app {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f3f4f6; 
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: margin-left;
+
+  &.shifted {
+    margin-left: 320px; // Width of the submenu
   }
-  
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #f3f4f6;
-  }
-  
+}
   // Import other component-specific styles
   @import './Header_style.scss';
   @import './ToolsBar_style.scss';

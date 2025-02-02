@@ -7,6 +7,7 @@ import "./styles/main_style.scss"
 const App: React.FC = () => {
   const [userRole] = useState<"admin" | "user">("admin")
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
 
   const handleItemSelect = (itemName: string) => {
     setSelectedItem(itemName)
@@ -14,13 +15,15 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <Sidebar userRole={userRole} onItemSelect={handleItemSelect} />
-      <main className="main-content">
+      <Sidebar 
+        userRole={userRole} 
+        onItemSelect={handleItemSelect}
+      />
+      <div className={`main-content ${isSubmenuOpen ? "shifted" : ""}`}>
         {selectedItem === "Knowledge Base" ? <LandingPage /> : <div>Select an item from the sidebar</div>}
-      </main>
+      </div>
     </div>
   )
 }
 
 export default App
-
