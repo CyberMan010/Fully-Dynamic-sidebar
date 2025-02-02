@@ -37,7 +37,8 @@ export type IconName =
   | 'Home'
   | 'Arrow - Left 2'
   | 'Arrow - Right 2'
-  | 'search-normal2';
+  | 'search-normal2'
+  | 'Chart graph 5';
  
 
 
