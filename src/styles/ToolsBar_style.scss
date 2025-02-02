@@ -1,101 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+body {
+  font-family: 'Cairo', sans-serif;
+}
+
 .tools-bar {
+  height: 44px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+  margin-bottom: 24px;
+
+  &__left {
     display: flex;
-    justify-content: space-between;
+    gap: 24px;
     align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
-  
-    &__left {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
+  }
+
+  .view-button {
+    position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+
+    span {
+      font-family: Cairo;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #64748B;
     }
-  
-    &__view-toggle {
-      display: flex;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.25rem;
-      overflow: hidden;
-  
-      button {
-        background: none;
-        border: none;
-        padding: 0.5rem;
-        cursor: pointer;
-  
-        &.active {
-          background-color: #f3f4f6;
-        }
-  
-        img {
-          width: 1rem;
-          height: 1rem;
-        }
+
+    &.active {
+      span {
+        color: #172554;
       }
     }
-  
-    &__search {
-      position: relative;
-  
-      input {
-        padding: 0.5rem 0.5rem 0.5rem 2rem;
-        border: 1px solid #e5e7eb;
-        border-radius: 0.25rem;
-        width: 16rem;
-      }
-  
-      img {
-        position: absolute;
-        left: 0.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-  
-    &__right {
-      display: flex;
-      gap: 1rem;
-    }
-  
-    &__filter-button {
-      background: none;
-      border: 1px solid #e5e7eb;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #f3f4f6;
-      }
-  
-      img {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-  
-    &__add-button {
-      background-color: #3b82f6;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-  
-      &:hover {
-        background-color: #2563eb;
-      }
-  
-      img {
-        width: 1rem;
-        height: 1rem;
-      }
+
+    &:hover:not(.active) {
+      opacity: 0.8;
     }
   }
-  
-  
+
+  &__center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: -100px; // Adjust based on your needs
+  }
+
+  &__search {
+    margin-left:99px;
+    margin-right: 18px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 660px;
+
+    input {
+      width: 100%;
+      height: 24px;
+      padding: 10px 12px 10px 44px;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #374151;
+      background: #fff;
+
+      &::placeholder {
+        font-family: Cairo;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #94A3B8;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #2563EB;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9CA3AF;
+      pointer-events: none;
+    }
+  }
+
+  &__right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-weight: 100;
+  }
+
+  &__filter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #6B7280;
+    margin-right: 12px;
+
+    &:hover {
+      background-color: #F9FAFB;
+    }
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background-color: #2563EB;
+    color: #FFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #1D4ED8;
+    }
+  }
+}
