@@ -1,16 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
 .app {
   display: flex;
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+  font-family: 'cairo';
 }
 
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #f3f4f6; 
-  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: margin-left;
+  background-color: #f3f4f6;
+  transition: margin-left 0.3s ease;
 
   &.shifted {
     margin-left: 320px; // Width of the submenu
