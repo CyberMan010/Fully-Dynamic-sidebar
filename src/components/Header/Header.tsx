@@ -20,10 +20,13 @@ export const Header: React.FC = () => {
             <Icon name="language" size={20} />
             <span>Language</span>
           </button>
-          <button className="header__button">
-            <Icon name="Profile" size={20} />
-            <span>Profile</span>
-          </button>
+          <button className="header__button profile">
+  <div className="profile__icon">
+    <Icon name="Profile" size={20} />
+  </div>
+  <span>Profile</span>
+</button>
+
         </div>
       </div>
     </header>

@@ -1,56 +1,75 @@
 .header {
-    border-bottom: 1px solid #e5e7eb;
-    background-color: #ffffff;
-  
-    &__container {
-      display: flex;
-      align-items: center;
-      padding: 0 1rem;
-      height: 80px  ;
-    }
-  
-    &__title {
-      color: var(--Primary-Colors-Dark-Blue, #142452);
-font-variant-numeric: lining-nums proportional-nums;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
 
-      margin-left: 55px;
-      font-family: Cairo;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 20px;
-      flex: 1;
+  &__container {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 80px;
+  }
+
+  &__title {
+    color: var(--Primary-Colors-Dark-Blue, #142452);
+    font-variant-numeric: lining-nums proportional-nums;
+    margin-left: 55px;
+    font-family: Cairo;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    flex: 1;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    font-style: normal;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #f3f4f6;
     }
-  
-  
-    &__actions {
-      display: flex;
-      gap: 40px;
-    }
-  
-    &__button {
-      display: flex; // Added to align icon and text
-      align-items: center; // Center items vertically
-      gap: 10px; // Gap between icon and text
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      color: #374151; // Added text color
-      font-size: 14px; // Added font
-      font-weight: 600;
-      line-height: 20px;
-      font-style: normal;
-  
-      &:hover {
-        background-color: #f3f4f6;
-      }
-   
-      img {
-        width: 1.25rem;
-        height: 1.25rem;
-      }
+
+    img {
+      width: 1.25rem;
+      height: 1.25rem;
     }
   }
-  
+
+  // Profile button styling
+  &__button.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .profile__icon {
+    width: 40px;
+    height: 40px;
+    background: #ebecf2; // Circle background
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
