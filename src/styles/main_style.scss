@@ -15,6 +15,19 @@
     margin-left: 320px; // Width of the submenu
   }
 }
+.landing-page {
+  &__content-wrapper {
+    max-width: 1038px;
+    margin: 0 auto;
+    height: 564px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 200px); // Adjust based on your header height
+  }
+}
   // Import other component-specific styles
   @import './Header_style.scss';
   @import './ToolsBar_style.scss';

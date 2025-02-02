@@ -1,12 +1,27 @@
 .cards-frame {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(249.5px, 1fr));
+  grid-template-columns: repeat(4, 249.5px); // Fixed width for 4 cards
   gap: 24px;
-  padding: 24px;
-  width: 100%;
+  padding: 24px 0; // Remove horizontal padding
+  width: 1038px; // Match toolbar width
+  margin: 0; // Remove margin
+  overflow: visible;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 4px 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 }
-
