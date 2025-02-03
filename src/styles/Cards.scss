@@ -1,6 +1,7 @@
 .card {
-  display: flex;
-  width: 249.5px; // Fixed width
+   display: flex;
+  width: 100%; // Changed from fixed width to 100%
+  max-width: 249.5px; // Maximum width of the card
   height: 274px;
   padding: 14px;
   flex-direction: column;

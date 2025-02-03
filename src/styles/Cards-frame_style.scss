@@ -1,12 +1,12 @@
 .cards-frame {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); // Use fractional units for responsive width
-  gap: 24px; // Add gap between cards
+  grid-template-columns: repeat(4, 1fr); // Always 4 columns
+  gap: 24px; // Gap between cards
   padding: 24px 0; // Remove horizontal padding
   width: 100%; // Take full width of its container
-  max-width: 1038px; // Match the width of the toolbar
-  margin: 0 auto; // Center the frame
-  overflow: visible;
+  max-width: 1088px; // Adjusted to fit 4 cards perfectly (4 * 249.5px + 3 * 24px gap)
+  margin: 0; // Remove auto margin
+  justify-content: start; // Align items to the start (left)
   
   &::-webkit-scrollbar {
     width: 6px;
@@ -26,3 +26,26 @@
     }
   }
 }
+
+// Media queries for responsiveness
+@media (max-width: 1120px) {
+  .cards-frame {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 816px; // 3 * 249.5px + 2 * 24px
+  }
+}
+
+@media (max-width: 840px) {
+  .cards-frame {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 544px; // 2 * 249.5px + 1 * 24px
+  }
+}
+
+@media (max-width: 568px) {
+  .cards-frame {
+    grid-template-columns: 1fr;
+    max-width: 272px; // 1 * 249.5px + some padding
+  }
+}
+
