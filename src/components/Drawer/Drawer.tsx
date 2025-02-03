@@ -40,7 +40,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         <div className="drawer__header">
           <div className="drawer__header-content">
             <div className="drawer__icon">
-             <Icon name="archive" size={24} />
+             <Icon name="archive" size={38} />
             </div>
             <div className="drawer__titles">
               <h2 className="drawer__title">{title}</h2>

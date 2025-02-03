@@ -106,7 +106,7 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
           className="sr-only"
         />
         <label htmlFor="collection-image" className="upload-label">
-          <Icon name="document-upload" size={24} />
+          <Icon name="document-upload" size={40} />
           <span className="upload-text">
             <span className="upload-link">Click here</span> to upload your Collection Thumbnail or drag and drop.
           </span>

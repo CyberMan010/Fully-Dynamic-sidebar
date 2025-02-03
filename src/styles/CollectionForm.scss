@@ -1,15 +1,15 @@
 .collection-form {
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 24px;
   
       label {
         display: block;
         font-size: 0.875rem;
         font-weight: 500;
         color: #1a1d1f;
-        margin-bottom: 0.5rem;
+        margin-bottom: 8px;
   
-        .required {
+        .required { 
           color: #2f6feb;
           margin-left: 0.25rem;
         }
@@ -18,8 +18,9 @@
       input,
       textarea,
       select {
+        background-color: #F8F9FC; 
         width: 100%;
-        padding: 0.75rem 1rem;
+        padding: 12px 16px;
         border: 1px solid #e6e8ec;
         border-radius: 8px;
         font-size: 0.875rem;
@@ -28,8 +29,8 @@
         transition: all 0.2s ease;
   
         &::placeholder {
-          color: #9ba1a8;
-        }
+            color: #6F767E; // Adjust placeholder color
+          }
   
         &:focus {
           outline: none;
@@ -53,7 +54,7 @@
   
     .form-row {
       display: flex;
-      gap: 1rem;
+      gap: 24px;
   
       .form-group {
         flex: 1;
@@ -61,14 +62,15 @@
     }
   
     .upload-area {
-      margin: 2rem 0;
+        margin: 32px 0;
     }
   
     .upload-label {
+        background-color: #F8F9FC;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
+      padding: 32px;
       border: 2px dashed #e6e8ec;
       border-radius: 12px;
       cursor: pointer;
@@ -104,8 +106,10 @@
       display: flex;
       justify-content: flex-start;
       gap: 1rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      margin-top: 32px; 
+      margin-bottom: 32px; 
+      padding-bottom: 16px;
+      
     }
   
     .button {
@@ -120,12 +124,13 @@
       transition: all 0.2s ease;
   
       &--primary {
-        background-color: #2f6feb;
+        background-color: #2F6FEB;
+        padding: 12px 24px;
         color: #fff;
         border: none;
   
         &:hover {
-          background-color: darken(#2f6feb, 5%);
+            background-color: darken(#2F6FEB, 5%);
         }
   
         &:disabled {
@@ -144,6 +149,7 @@
         background-color: transparent;
         color: #6f767e;
         border: none;
+        padding: 12px 24px;
   
         &:hover {
           color: #1a1d1f;
