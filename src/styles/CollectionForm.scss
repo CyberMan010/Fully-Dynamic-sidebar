@@ -1,0 +1,62 @@
+.collection-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  
+    &__image-upload {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #F9FAFB;
+      border: 2px dashed #E5E7EB;
+      transition: all 0.2s ease;
+  
+      &:hover {
+        border-color: #2563EB;
+        background-color: #F3F4F6;
+      }
+    }
+  
+    .image-upload-label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  
+    .upload-placeholder {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6B7280;
+    }
+  
+    .image-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+  
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+  }
+  
+  
