@@ -7,56 +7,56 @@
   border: 1px solid var(--Gray-Colors-Gray-10, #EBECF2);
   border-radius: 8px;
   margin: 24px 0;
-  
-    &__info {
-      font-size: 0.875rem;
-      color: #6b7280;
+
+  &__info {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  &__button {
+    width: 32px;
+    height: 34px;
+    background: none;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+
+      background-color: #f3f4f6;
     }
-  
-    &__controls {
-      display: flex;
-      gap: 0.25rem;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
-  
-    &__button {
-      background: none;
-      border: 1px solid #e5e7eb;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-  
-      &:hover:not(:disabled) {
-        background-color: #f3f4f6;
-      }
-  
-      &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-  
-      img {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-  
-    &__page {
-      background: none;
-      border: 1px solid #e5e7eb;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-  
-      &:hover:not(.active) {
-        background-color: #f3f4f6;
-      }
-  
-      &.active {
-        background-color: #3b82f6;
-        color: #fff;
-        border-color: #3b82f6;
-      }
+
+    img {
+      width: 18px;
+      height: 18px;
     }
   }
-  
-  
+
+  &__page {
+    background: none;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    &:hover:not(.active) {
+      background-color: #f3f4f6;
+    }
+
+    &.active {
+      background-color: #2C4FA4;
+      color: #fff;
+    }
+  }
+}

@@ -103,6 +103,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole, onItemSelect }) => {
       }
     }
   }
+  
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-container input') as HTMLInputElement;
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }
+    };
+  
+    document.addEventListener('keydown', handleKeyDown);
+  
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   const renderMenuItem = (item: SidebarItem, index: number) => {
     if (item.type === "divider") {

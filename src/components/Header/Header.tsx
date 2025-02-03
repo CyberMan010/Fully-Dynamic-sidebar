@@ -15,23 +15,23 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="header">
-      <div className="header__container">
-        <h1 className="header__title">Knowledge Base</h1>
-        <div className="header__actions">
-          <button className="header__button">
+    <header className="header1">
+      <div className="header1__container">
+        <h1 className="header1__title">Knowledge Base</h1>
+        <div className="header1__actions">
+          <button className="header1__button">
             <Icon name="Home" size={24} />
             <span>Home</span>
           </button>
-          <button className="header__button">
+          <button className="header1__button">
             <Icon name="Notification" size={24} />
             <span>Notifications</span>
           </button>
-          <button className="header__button">
+          <button className="header1__button">
             <Icon name="language" size={24} />
             <span>Language</span>
           </button>
-          <div className="header__button profile-dropdown">
+          <div className="header1__button profile-dropdown">
             <div className="profile-dropdown__icon">
               <Icon name="Profile" size={20} />
             </div>
