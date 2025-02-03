@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './CollectionForm.scss';
+import '../../styles/CollectionForm.scss';
+import { Icon } from '../../config/icons';
 
 interface CollectionFormProps {
   onSubmit: (data: FormData) => void;
@@ -9,9 +10,8 @@ interface CollectionFormProps {
 interface FormData {
   title: string;
   description: string;
-  type: string;
-  accessLevel: string;
   tags: string;
+  accessLevel: string;
   image: File | null;
 }
 
@@ -19,121 +19,108 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
   const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
-    type: "",
-    accessLevel: "",
     tags: "",
+    accessLevel: "",
     image: null,
   });
-
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setFormData((prev) => ({ ...prev, image: file }));
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
   };
 
-  const isFormValid = formData.title && formData.description && formData.type && formData.accessLevel;
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData(prev => ({ ...prev, image: file }));
+    }
+  };
+
+  const isFormValid = formData.title && formData.description && formData.accessLevel;
 
   return (
     <form onSubmit={handleSubmit} className="collection-form">
-      <div className="collection-form__image-upload">
-        <input 
-          type="file" 
-          id="image-upload" 
-          accept="image/*" 
-          onChange={handleImageChange} 
-          className="sr-only" 
-        />
-        <label htmlFor="image-upload" className="image-upload-label">
-          {imagePreview ? (
-            <img src={imagePreview} alt="Collection preview" className="image-preview" />
-          ) : (
-            <div className="upload-placeholder">
-              <img src="/icons/upload.svg" alt="Upload" className="upload-icon" />
-              <span>Upload Image</span>
-              <span className="upload-hint">Recommended size: 800x600px</span>
-            </div>
-          )}
+      <div className="form-group">
+        <label>
+          Collection Name
+          <span className="required">*</span>
+          <input
+            type="text"
+            value={formData.title}
+            onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+            placeholder="Arena"
+          />
         </label>
       </div>
 
       <div className="form-group">
-        <label htmlFor="title">Collection Title</label>
-        <input
-          id="title"
-          type="text"
-          value={formData.title}
-          onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))}
-          placeholder="Enter collection title"
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          value={formData.description}
-          onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
-          placeholder="Enter collection description"
-          rows={4}
-        />
+        <label>
+          Description
+          <span className="required">*</span>
+          <textarea
+            value={formData.description}
+            onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+            placeholder="Description"
+            rows={4}
+          />
+        </label>
       </div>
 
       <div className="form-row">
         <div className="form-group">
-          <label htmlFor="type">Type</label>
-          <select
-            id="type"
-            value={formData.type}
-            onChange={(e) => setFormData((prev) => ({ ...prev, type: e.target.value }))}
-          >
-            <option value="">Select type</option>
-            <option value="documentation">Documentation</option>
-            <option value="tutorial">Tutorial</option>
-            <option value="guide">Guide</option>
-          </select>
+          <label>
+            Tags
+            <span className="required">*</span>
+            <input
+              type="text"
+              value={formData.tags}
+              onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
+              placeholder="Placeholder"
+            />
+          </label>
         </div>
 
         <div className="form-group">
-          <label htmlFor="access">Access Level</label>
-          <select
-            id="access"
-            value={formData.accessLevel}
-            onChange={(e) => setFormData((prev) => ({ ...prev, accessLevel: e.target.value }))}
-          >
-            <option value="">Select access level</option>
-            <option value="public">Public</option>
-            <option value="private">Private</option>
-            <option value="restricted">Restricted</option>
-          </select>
+          <label>
+            Access Level
+            <span className="required">*</span>
+            <select
+              value={formData.accessLevel}
+              onChange={(e) => setFormData(prev => ({ ...prev, accessLevel: e.target.value }))}
+            >
+              <option value="">Placeholder</option>
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="restricted">Restricted</option>
+            </select>
+          </label>
         </div>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="tags">Tags</label>
+      <div className="upload-area">
         <input
-          id="tags"
-          type="text"
-          value={formData.tags}
-          onChange={(e) => setFormData((prev) => ({ ...prev, tags: e.target.value }))}
-          placeholder="Enter tags separated by commas"
+          type="file"
+          id="collection-image"
+          accept="image/svg+xml,image/jpeg,image/png"
+          onChange={handleFileChange}
+          className="sr-only"
         />
+        <label htmlFor="collection-image" className="upload-label">
+          <Icon name="document-upload" size={24} />
+          <span className="upload-text">
+            <span className="upload-link">Click here</span> to upload your Collection Thumbnail or drag and drop.
+          </span>
+          <span className="upload-hint">Supported Format: SVG, JPG, PNG (10mb each)</span>
+        </label>
       </div>
 
       <div className="form-actions">
-        <button type="button" className="button button--outline" onClick={onCancel}>
-          Cancel
-        </button>
-        <button type="submit" className="button" disabled={!isFormValid}>
+        <button type="submit" className="button button--primary" disabled={!isFormValid}>
+          <span className="button-icon">+</span>
           Create Now
+        </button>
+        <button type="button" className="button button--text" onClick={onCancel}>
+          Cancel
         </button>
       </div>
     </form>

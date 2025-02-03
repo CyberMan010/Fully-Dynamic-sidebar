@@ -1,62 +1,165 @@
 .collection-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  
-    &__image-upload {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #F9FAFB;
-      border: 2px dashed #E5E7EB;
-      transition: all 0.2s ease;
-  
-      &:hover {
-        border-color: #2563EB;
-        background-color: #F3F4F6;
-      }
-    }
-  
-    .image-upload-label {
-      display: block;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-    }
-  
-    .upload-placeholder {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #6B7280;
-    }
-  
-    .image-preview {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      margin-bottom: 1.5rem;
+  
+      label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #1a1d1f;
+        margin-bottom: 0.5rem;
+  
+        .required {
+          color: #2f6feb;
+          margin-left: 0.25rem;
+        }
+      }
+  
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e6e8ec;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        color: #1a1d1f;
+        background-color: #fff;
+        transition: all 0.2s ease;
+  
+        &::placeholder {
+          color: #9ba1a8;
+        }
+  
+        &:focus {
+          outline: none;
+          border-color: #2f6feb;
+        }
+      }
+  
+      select {
+        appearance: none;
+        background-image: url('/icons/chevron-down.svg');
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+      }
+  
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
     }
   
     .form-row {
       display: flex;
-      gap: 16px;
+      gap: 1rem;
+  
+      .form-group {
+        flex: 1;
+      }
+    }
+  
+    .upload-area {
+      margin: 2rem 0;
+    }
+  
+    .upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      border: 2px dashed #e6e8ec;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+  
+      &:hover {
+        border-color: #2f6feb;
+      }
+    }
+  
+    .upload-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+  
+    .upload-text {
+      color: #6f767e;
+      margin-bottom: 0.5rem;
+  
+      .upload-link {
+        color: #2f6feb;
+        font-weight: 500;
+      }
+    }
+  
+    .upload-hint {
+      font-size: 0.75rem;
+      color: #9ba1a8;
     }
   
     .form-actions {
       display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-      margin-top: 24px;
+      justify-content: flex-start;
+      gap: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+  
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+  
+      &--primary {
+        background-color: #2f6feb;
+        color: #fff;
+        border: none;
+  
+        &:hover {
+          background-color: darken(#2f6feb, 5%);
+        }
+  
+        &:disabled {
+          background-color: #e6e8ec;
+          cursor: not-allowed;
+        }
+  
+        .button-icon {
+          margin-right: 0.5rem;
+          font-size: 1.25rem;
+          line-height: 1;
+        }
+      }
+  
+      &--text {
+        background-color: transparent;
+        color: #6f767e;
+        border: none;
+  
+        &:hover {
+          color: #1a1d1f;
+          background-color: #f8f9fc;
+        }
+      }
     }
   }
   
-  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }

@@ -38,7 +38,11 @@ export type IconName =
   | 'Arrow - Left 2'
   | 'Arrow - Right 2'
   | 'search-normal2'
-  | 'Chart graph 5';
+  | 'Chart graph 5'
+  | 'close-circle'
+  | 'archive'
+  | 'document-upload';
+
  
 
 
