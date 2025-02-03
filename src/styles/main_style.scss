@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+
 .app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   display: flex;
   min-height: 100vh;
   font-family: 'cairo';
@@ -7,7 +11,10 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
   background-color: #f3f4f6;
   transition: margin-left 0.3s ease;
 
@@ -17,16 +24,42 @@
 }
 
 .landing-page {
-  &__content-wrapper {
-    max-width: 1038px;
-    margin: 0 auto;
-    height: 564px;
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif;
+  background-color: #f3f4f6;
+
+  &__container{
+    width: 100%;
   }
 
   &__content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__content-wrapper {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 200px); // Adjust based on your header height
+    max-width: 1088px; // Match the cards-frame and tools-bar max-width
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 }
 
@@ -36,3 +69,22 @@
 @import './Cards-frame_style.scss';
 @import './Cards.scss';
 @import './Pagination_style.scss';
+
+// Add media queries for responsiveness
+@media (max-width: 1120px) {
+  .landing-page__content {
+    max-width: 816px;
+  }
+}
+
+@media (max-width: 840px) {
+  .landing-page__content {
+    max-width: 544px;
+  }
+}
+
+@media (max-width: 568px) {
+  .landing-page__content {
+    max-width: 272px;
+  }
+}
