@@ -103,6 +103,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole, onItemSelect }) => {
       }
     }
   }
+  
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
@@ -120,6 +121,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole, onItemSelect }) => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+
   const renderMenuItem = (item: SidebarItem, index: number) => {
     if (item.type === "divider") {
       return <div key={item.id} className="sidebar-divider" />

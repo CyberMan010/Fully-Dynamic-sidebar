@@ -25,6 +25,7 @@ export type IconName =
   | 'cmd-icon'
   | 'cmd-icon2'
   | '2 Arrow - Right'
+  | '2 Arrow - Left'
   | 'logoCard'
   | 'Notification'
   | 'language'
@@ -41,7 +42,7 @@ export type IconName =
   | 'Chart graph 5'
   | 'close-circle'
   | 'archive'
-  | 'document-upload';
+  | 'document-upload'
 
  
 

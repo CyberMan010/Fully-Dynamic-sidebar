@@ -1,12 +1,17 @@
-.header {
-  border-bottom: 1px solid #e5e7eb;
-  background-color: #ffffff;
+.header1 {
+  border-bottom: 1px solid var(--Dark-Primary-Buttons-Gray-Colors-Gray-20, #D8DAE5);
+  background: var(--Dark-Primary-Buttons-Gray-Colors-White, #FFF);
+
+  
+
 
   &__container {
+    width: 100%;
+    max-width: 1038px;
     display: flex;
     align-items: center;
-    padding: 0 1rem;
-    height: 80px;
+    padding: 19px 30px;
+    height: auto 80px;
   }
 
   &__title {
@@ -20,6 +25,7 @@
   }
 
   &__actions {
+    align-items: center;
     display: flex;
     gap: 40px;
   }
@@ -65,6 +71,7 @@
         border-radius: 0; // Remove circular shape
         width: auto; // Reset width
         height: auto; // Reset height
+        margin-top: 10px;
       }
 
       &:hover {

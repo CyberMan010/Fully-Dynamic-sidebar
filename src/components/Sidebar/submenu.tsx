@@ -55,9 +55,7 @@ export const Submenu: React.FC<SubmenuProps> = ({ title, sections, onClose, stor
           </button>
           <h2>{title}</h2>
         </div>
-        <button className="more-button">
-          <Icon name="more-vertical" size={20} />
-        </button>
+       
       </div>
 
       <div className="submenu-content">

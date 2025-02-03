@@ -1,94 +1,93 @@
-$sidebar-width-expanded: 326px;
-$sidebar-width-collapsed: 108px;
-$content-transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
-
-.app {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  min-height: 100vh;
-  font-family: 'cairo';
-}
-
-.main-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #f3f4f6;
-  transition: margin-left 0.3s ease;
-
-  &.shifted {
-    margin-left: 320px; // Width of the submenu
-  }
-}
-
-.landing-page {
-  padding: 15px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  height: 100vh;
-  font-family: 'Cairo', sans-serif;
-  background-color: #f3f4f6;
-
-  &__container{
-    width: 100%;
-  }
-
-  &__content {
-    max-width: 1200px;
-    width: 100%;
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+ .html{
+  width: 1,376px;
+  height: 972px;
+ }
+  .app {
     margin: 0;
     padding: 0;
+    height: 100%;
+    
+    display: flex;
+    font-family: 'cairo';
   }
 
-  &__content-wrapper {
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    transition: margin-left 0.3s ease;
+
+    &.shifted {
+      margin-left: 320px; // Width of the submenu
+    }
+  }
+
+  .landing-page {
+    padding: 15px;
     flex: 1;
     display: flex;
     flex-direction: column;
-    max-width: 1200px; // Match the cards-frame and tools-bar max-width
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    overflow: hidden;
+    overflow: auto;
+    height: 100vh;
+    font-family: 'Cairo', sans-serif;
+    background-color: #f3f4f6;
+
+    &__container{
+      width: 100%;
+    }
+
+    &__content {
+      flex-direction: column(4,1fr);
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__content-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px; 
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    &__content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
   }
 
-  &__content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-}
+  // Import other component-specific styles
+  @import './Header_style.scss';
+  @import './ToolsBar_style.scss';
+  @import './Cards-frame_style.scss';
+  @import './Cards.scss';
+  @import './Pagination_style.scss';
 
-// Import other component-specific styles
-@import './Header_style.scss';
-@import './ToolsBar_style.scss';
-@import './Cards-frame_style.scss';
-@import './Cards.scss';
-@import './Pagination_style.scss';
-
-// Add media queries for responsiveness
-@media (max-width: 1120px) {
-  .landing-page__content {
-    max-width: 816px;
+  // Add media queries for responsiveness
+  @media (max-width: 1120px) {
+    .landing-page__content {
+      max-width: 816px;
+    }
   }
-}
 
-@media (max-width: 840px) {
-  .landing-page__content {
-    max-width: 544px;
+  @media (max-width: 840px) {
+    .landing-page__content {
+      max-width: 544px;
+    }
   }
-}
 
-@media (max-width: 568px) {
-  .landing-page__content {
-    max-width: 272px;
+  @media (max-width: 568px) {
+    .landing-page__content {
+      max-width: 272px;
+    }
   }
-}
