@@ -3,7 +3,7 @@
 import { useEffect, type ReactNode } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import "./Drawer.scss"
+import "../../styles/Drawer_style.scss"
 
 interface DrawerProps {
   isOpen: boolean
