@@ -8,7 +8,10 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
   background-color: #f3f4f6;
   transition: margin-left 0.3s ease;
 
@@ -18,16 +21,28 @@
 }
 
 .landing-page {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
   &__content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     max-width: 1088px; // Match the cards-frame and tools-bar max-width
-    margin: 0; // Remove auto margin
-    padding: 0 24px; // Add padding to align with the card grid
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
   }
 
   &__content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 200px); // Adjust based on your header height
+    overflow: hidden;
   }
 }
 

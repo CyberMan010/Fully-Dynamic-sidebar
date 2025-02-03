@@ -1,12 +1,10 @@
 .cards-frame {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); // Always 4 columns
-  gap: 42px; // Gap between cards
-  padding: 24px 0; // Remove horizontal padding
-  width: 100%; // Take full width of its container
-  max-width: 1088px; // Adjusted to fit 4 cards perfectly (4 * 249.5px + 3 * 24px gap)
-  margin: 0; // Remove auto margin
-  justify-content: start; // Align items to the start (left)
+  grid-template-columns: repeat(auto-fill, minmax(249.5px, 1fr));
+  gap: 24px;
+  width: 100%;
+  justify-content: start;
+  margin-bottom: 24px;
   
   &::-webkit-scrollbar {
     width: 6px;
@@ -26,7 +24,6 @@
     }
   }
 }
-
 // Media queries for responsiveness
 @media (max-width: 1120px) {
   .cards-frame {
