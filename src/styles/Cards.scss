@@ -1,9 +1,9 @@
 .card {
    display: flex;
-  width: 100%; // Changed from fixed width to 100%
-  max-width: 249.5px; // Maximum width of the card
-  height: 274px;
-  padding: 14px;
+  // width: 100%; // Changed from fixed width to 100%
+  max-width: 15.5938rem; 
+  height: 17.125rem;
+  padding: .875rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
@@ -110,12 +110,12 @@
   &__meta {
     display: flex;
     gap: 49px;
-    align-self: stretch;
-    align-items: flex-start;
+    // align-self: stretch;
+    // align-items: flex-start;
+    // align-items: center;
 
     &-item {
       display: flex;
-      align-items: center;
       gap: 8px;
       color: #475467;
       font-size: 14px;

@@ -54,7 +54,7 @@ export const ToolsBar: React.FC<ToolsBarProps> = ({ view, onViewChange, onSearch
           </button>
           <button className="tools-bar__add-button" onClick={() => setIsDrawerOpen(true)}>
             <Icon name="add" size={24} />
-            Add New
+          Add New
           </button>
         </div>
       </div>

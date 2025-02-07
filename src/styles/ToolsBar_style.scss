@@ -4,15 +4,17 @@ body {
 }
 
 .tools-bar {
-  height: 44px;
+  width: 61.9rem;
+  height: 2.01rem;
   padding: 16px 24px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  
+  gap: .75rem;
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
-  margin-bottom: 24px;
+  margin-bottom: 1.1875rem;
+  margin-top: 1.1875rem;
 
   &__left {
     display: flex;
@@ -54,22 +56,21 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
-    margin-left: -100px; // Adjust based on your needs
   }
 
   &__search {
-    margin-left:99px;
-    margin-right: 18px;
-    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 660px;
-
+    max-width: 33.75rem;
+    max-height: 1.9rem;
+    padding: .625rem .75rem .625rem .75rem;
+    gap: 1.3125rem;
     input {
-      width: 100%;
-      height: 24px;
-      padding: 10px 12px 10px 44px;
+      
+      width: 35.75rem;
+      height: 2.75rem auto;
+      padding: .625rem .75rem .625rem .75rem;
       border: 1px solid #E5E7EB;
       border-radius: 8px;
       font-size: 14px;
@@ -117,7 +118,7 @@ body {
     border: 1px solid #E5E7EB;
     border-radius: 8px;
     cursor: pointer;
-    color: #6B7280;
+    color: var(--Blue-950, #172554);;
     margin-right: 12px;
 
     &:hover {
@@ -126,6 +127,9 @@ body {
   }
 
   &__add-button {
+    max-width: 6.875rem;
+    max-height: 2.75rem;
+    font-family: 'Cairo';
     display: flex;
     align-items: center;
     gap: 8px;

@@ -1,13 +1,13 @@
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
  .html{
-  width: 1,376px;
-  height: 972px;
+  max-width: 90rem;
+  max-height: 64rem;
  }
   .app {
     margin: 0;
     padding: 0;
+    top: 1.875rem;
     height: 100%;
-    
     display: flex;
     font-family: 'cairo';
   }
@@ -35,6 +35,7 @@
     height: 100vh;
     font-family: 'Cairo', sans-serif;
     background-color: #f3f4f6;
+    width: 100%;
 
     &__container{
       width: 100%;
