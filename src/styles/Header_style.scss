@@ -1,24 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+
 .header1 {
   border-radius: 12px;
   border-bottom: 1px solid var(--Dark-Primary-Buttons-Gray-Colors-Gray-20, #D8DAE5);
   background: var(--Dark-Primary-Buttons-Gray-Colors-White, #FFF);
   max-width: 61.125rem;
-  height: auto 42em;
-  padding: 19px 30px ;
-  gap: .625rem;
+  height: auto;
+  padding: 19px 30px;
+  gap: 0.625rem;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 
-  
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+  }
 
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+  }
 
   &__container {
     display: flex;
-justify-content: space-between;
-align-items: center;
-align-self: stretch;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
 
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__title {
@@ -30,6 +41,17 @@ align-self: stretch;
     line-height: 20px;
     flex: 1;
     align-self: flex-start;
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
   }
 
   &__actions {
@@ -37,6 +59,16 @@ align-self: stretch;
     display: flex;
     gap: 40px;
     align-self: flex-end;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 10px;
+    }
   }
 
   &__button {
@@ -47,6 +79,10 @@ align-self: stretch;
     background: none;
     border: none;
 
+    @media (max-width: 480px) {
+      gap: 5px;
+    }
+
     // Profile dropdown styles
     &.profile-dropdown {
       display: flex;
@@ -55,7 +91,11 @@ align-self: stretch;
       color: #142452;
       font-size: 14px;
       font-weight: 600;
-      position: relative; // Added for dropdown positioning
+      position: relative;
+
+      @media (max-width: 480px) {
+        font-size: 12px;
+      }
 
       .profile-dropdown__icon {
         width: 40px;
@@ -66,21 +106,38 @@ align-self: stretch;
         align-items: center;
         justify-content: center;
 
+        @media (max-width: 480px) {
+          width: 32px;
+          height: 32px;
+        }
+
         svg {
-          fill: #142452; // Color for the profile icon
+          fill: #142452;
+          
+          @media (max-width: 480px) {
+            transform: scale(0.8);
+          }
         }
       }
 
       .profile-dropdown__name {
         font-family: Cairo, sans-serif;
+
+        @media (max-width: 480px) {
+          display: none;
+        }
       }
 
       .toggle-icon {
-        background: none; // Remove background for the toggle icon
-        border-radius: 0; // Remove circular shape
-        width: auto; // Reset width
-        height: auto; // Reset height
+        background: none;
+        border-radius: 0;
+        width: auto;
+        height: auto;
         margin-top: 10px;
+
+        @media (max-width: 480px) {
+          margin-top: 5px;
+        }
       }
 
       &:hover {
@@ -91,7 +148,7 @@ align-self: stretch;
 
       .profile-dropdown__menu {
         position: absolute;
-        top: 100%; // Position below the profile button
+        top: 100%;
         right: 0;
         background-color: #ffffff;
         border: 1px solid #e5e7eb;
@@ -101,12 +158,21 @@ align-self: stretch;
         min-width: 150px;
         margin-top: 8px;
 
+        @media (max-width: 480px) {
+          min-width: 120px;
+        }
+
         .profile-dropdown__option {
           padding: 0.75rem 1rem;
           cursor: pointer;
           font-family: Cairo, sans-serif;
           font-size: 14px;
           color: #142452;
+
+          @media (max-width: 480px) {
+            font-size: 12px;
+            padding: 0.5rem 0.75rem;
+          }
 
           &:hover {
             background-color: #f3f4f6;

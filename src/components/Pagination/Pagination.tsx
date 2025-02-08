@@ -38,7 +38,7 @@ export const KnowledgeBasePagination: React.FC<PaginationProps> = ({
   return (
     <div className="pagination">
       <span className="pagination__info">
-        Showing page {currentPage} of {totalPages}
+        Showing on page {currentPage} - {currentPage} of {totalPages}
       </span>
       <div className="pagination__controls">
         {/* First Page Button */}
