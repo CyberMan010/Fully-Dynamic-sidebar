@@ -4,9 +4,9 @@ body {
 }
 
 .tools-bar {
-  width: 1038px; // 61.9rem converted to pixels for consistency
-  height: 64px; // 2.01rem + padding converted to pixels
-  padding: 16px 24px;
+  width: 990px; // Fixed width
+  height: 64px; // Fixed height
+  padding: 0 24px; // Removed vertical padding to maintain height
   display: flex;
   gap: .75rem;
   border-radius: 8px;
@@ -14,6 +14,7 @@ body {
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
   margin-bottom: 1.1875rem;
   margin-top: 1.1875rem;
+  align-items: center; // Center items vertically
 
   &__left {
     display: flex;
@@ -53,12 +54,13 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   &__search {
     position: relative;
-    width: 564px; // Exact width as requested
-    height: 44px; // Exact height as requested
+    width: 564px; // Fixed width as requested
+    height: 44px; // Fixed height as requested
     
     .icon {
       position: absolute;
@@ -66,23 +68,26 @@ body {
       top: 50%;
       transform: translateY(-50%);
       display: flex;
-      width: 24px;
-      height: 24px;
+      width: 1.5rem; 
+      height: 1.5rem; 
       justify-content: center;
       align-items: center;
       color: #9CA3AF;
       pointer-events: none;
+      z-index: 1;
     }
 
     input {
-      width: 100%;
-      height: 100%;
-      padding: 10px 12px 10px 44px; // Added left padding to accommodate the icon
+      position: absolute;
+      width: 564px; 
+      height: 44px; 
+      padding: 10px 12px 10px 40px; 
       border: 1px solid #E5E7EB;
       border-radius: 8px;
       font-size: 14px;
       color: #374151;
       background: #fff;
+      box-sizing: border-box; // Ensure padding doesn't affect dimensions
 
       &::placeholder {
         font-family: Cairo;
@@ -125,13 +130,12 @@ body {
   }
 
   &__add-button {
-    max-width: 6.875rem;
-    max-height: 2.75rem;
+    height: 40px; // Fixed height
+    padding: 0 12px;
     font-family: 'Cairo';
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 12px;
     background-color: #2563EB;
     color: #FFF;
     border: none;
