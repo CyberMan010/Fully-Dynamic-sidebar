@@ -1,39 +1,15 @@
-$breakpoint-sm: 480px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-$breakpoint-xl: 1280px;
-$breakpoint-xxl: 1920px;
-
 .cards-frame {
-  width: 100%;
-  max-width: 1600px;
+  max-width: 64.875rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-  gap: clamp(8px, 2vw, 16px);
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(249.5px, 1fr));
+  gap: 12px;
+  width: 100%;
+  justify-content: start;
   margin-bottom: 24px;
-  padding-bottom: 24px;
-
-  @media (min-width: $breakpoint-xxl) {
-    max-width: 1800px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-
+  padding-bottom: 24px; // Add some bottom padding for better scrolling
+  
   &::-webkit-scrollbar {
     width: 6px;
-    
-    &-track {
-      background: transparent;
-      margin: 4px 0;
-    }
-    &-thumb {
-      background-color: rgba(0, 0, 0, 0.2);
-      border-radius: 3px;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.3);
-      }
-    }
   }
 
   &::-webkit-scrollbar-track {
@@ -49,21 +25,29 @@ $breakpoint-xxl: 1920px;
       background-color: rgba(0, 0, 0, 0.3);
     }
   }
-
-  @media (max-width: $breakpoint-xl) {
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  }
-
-  @media (max-width: $breakpoint-lg) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    grid-template-columns: 1fr;
+}
+// Media queries for responsiveness
+@media (max-width: 1120px) {
+  .cards-frame {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 816px; // 3 * 249.5px + 2 * 24px
   }
 }
 
+@media (max-width: 840px) {
+  .cards-frame {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 544px; // 2 * 249.5px + 1 * 24px
+  }
+}
+
+@media (max-width: 568px) {
+  .cards-frame {
+    grid-template-columns: 1fr;
+    max-width: 272px; // 1 * 249.5px + some padding
+  }
+}
+@media (min-width: 1441px) {
+  .cards-frame {
+      max-width: 1800px;
+  }}

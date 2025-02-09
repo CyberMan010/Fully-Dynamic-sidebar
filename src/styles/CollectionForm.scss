@@ -126,8 +126,8 @@ $breakpoint-xl: 1280px;
     .form-actions {
       display: flex;
       justify-content: flex-start;
-      gap: 1rem;
-      margin-top: 32px; 
+      gap: 18rem;
+      margin-top: 24px; 
       margin-bottom: 32px; 
       padding-bottom: 16px;
       
@@ -147,7 +147,6 @@ $breakpoint-xl: 1280px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
-  
       &--primary {
         background-color: #2F6FEB;
         padding: 12px 24px;

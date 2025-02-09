@@ -9,6 +9,10 @@
   margin-bottom: 24px;
   padding: clamp(10px, 2vw, 20px);
   box-sizing: border-box;
+  @media (min-width: 1441px) {
+    max-width: 1800px;
+  }
+
   }
   
   

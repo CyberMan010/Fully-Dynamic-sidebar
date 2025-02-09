@@ -7,12 +7,12 @@ $breakpoint-xl: 1280px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(5px, 1.5vw, 7px);
-  background: #FFF;
-  border: 1px solid #EBECF2;
+  padding: 7px;
+  background: var(--Dark-Primary-Buttons-White, #FFF);
+  border: 1px solid var(--Gray-Colors-Gray-10, #EBECF2);
   border-radius: 8px;
-  max-width: clamp(800px, 90vw, 1022px);
-  margin: 0 auto;
+  max-width: 1022px;
+
   &__info {
     color: var(--Primary-Colors-Bark-Blue, #142452);
     font-variant-numeric: lining-nums proportional-nums;
@@ -86,6 +86,10 @@ line-height: 17px; /* 141.667% */
     align-items: center;
     gap: 1rem;
   }
+  @media (min-width: 1441px) {
+    max-width: 1800px;
+  }
+
 
   &__info {
     @media (max-width: $breakpoint-sm) {

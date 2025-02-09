@@ -6,6 +6,7 @@ $breakpoint-xl: 1280px;
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
 
 .header1 {
+
   border-radius: 12px;
   border-bottom: 1px solid var(--Dark-Primary-Buttons-Gray-Colors-Gray-20, #D8DAE5);
   background: var(--Dark-Primary-Buttons-Gray-Colors-White, #FFF);
@@ -24,6 +25,10 @@ $breakpoint-xl: 1280px;
   @media (max-width: $breakpoint-sm) {
     padding: 10px 15px;
   }
+  @media (min-width: 1441px) {
+    max-width: 1800px;
+  }
+
 
   &__container {
     display: flex;

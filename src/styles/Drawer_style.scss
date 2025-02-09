@@ -4,6 +4,7 @@ $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
 
 .drawer-overlay {
+  
     position: fixed;
     top: 0;
     left: 0;
@@ -35,10 +36,13 @@ $breakpoint-xl: 1280px;
     }
   
     &__header {
-        flex-shrink: 0;
+      max-width: 562px;
+      max-height: 58px;
       display: flex;
-      align-items: center;
+      padding: 26px 16px 24px 16px;
       justify-content: space-between;
+      align-items: flex-start;
+      align-self: stretch;
       padding: -0.75rem 1.5rem;
       border-bottom: 1px solid #f5eef0;
       @media (max-width: $breakpoint-sm) {
@@ -112,7 +116,7 @@ $breakpoint-xl: 1280px;
     }
   
     &__close {
-        margin-right: 20px;
+        margin-right: -7px;
     margin-bottom: 59px;
       width: 32px;
       height: 32px;
