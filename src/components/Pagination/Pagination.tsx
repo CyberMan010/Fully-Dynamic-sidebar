@@ -16,8 +16,8 @@ export const KnowledgeBasePagination: React.FC<PaginationProps> = ({
   // Function to generate visible page numbers (max 5 at a time)
   const getVisiblePages = () => {
     const visiblePages = [];
-    let startPage = Math.max(1, currentPage - 2); // Start 2 pages before the current page
-    let endPage = Math.min(totalPages, currentPage + 2); // End 2 pages after the current page
+    let startPage = Math.max(1, currentPage - 2); 
+    let endPage = Math.min(totalPages, currentPage + 2); 
 
     // Adjust start and end if we're near the edges
     if (currentPage <= 3) {

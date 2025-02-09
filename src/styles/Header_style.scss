@@ -33,11 +33,13 @@
   }
 
   &__title {
-    color: #142452;
+    color: var(--Primary-Colors-Dark-Blue, #142452);
+    font-variant-numeric: lining-nums proportional-nums;
+
     margin-left: 55px;
     font-family: Cairo, sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 20px;
     flex: 1;
     align-self: flex-start;
