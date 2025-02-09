@@ -1,13 +1,18 @@
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
 .pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 7px;
-  background: var(--Dark-Primary-Buttons-White, #FFF);
-  border: 1px solid var(--Gray-Colors-Gray-10, #EBECF2);
+  padding: clamp(5px, 1.5vw, 7px);
+  background: #FFF;
+  border: 1px solid #EBECF2;
   border-radius: 8px;
-  max-width: 1022px;
-
+  max-width: clamp(800px, 90vw, 1022px);
+  margin: 0 auto;
   &__info {
     color: var(--Primary-Colors-Bark-Blue, #142452);
     font-variant-numeric: lining-nums proportional-nums;
@@ -75,4 +80,46 @@ line-height: 17px; /* 141.667% */
       color: #fff;
     }
   }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__info {
+    @media (max-width: $breakpoint-sm) {
+      font-size: 10px;
+    }
+  }
+
+  &__controls {
+    @media (max-width: $breakpoint-sm) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__button {
+    @media (max-width: $breakpoint-sm) {
+      width: 28px;
+      height: 30px;
+      font-size: 10px;
+    }
+
+    img {
+      @media (max-width: $breakpoint-sm) {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__page {
+    @media (max-width: $breakpoint-sm) {
+      padding: 0.4rem 0.6rem;
+      font-size: 10px;
+    }
+  }
 }
+

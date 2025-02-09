@@ -1,3 +1,8 @@
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
 .collection-form {
     .form-group {
       margin-bottom: 24px;
@@ -50,6 +55,10 @@
         resize: vertical;
         min-height: 120px;
       }
+
+      @media (max-width: $breakpoint-sm) {
+        margin-bottom: 16px;
+      }
     }
   
     .form-row {
@@ -59,10 +68,18 @@
       .form-group {
         flex: 1;
       }
+
+      @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+        gap: 16px;
+      }
     }
   
     .upload-area {
         margin: 32px 0;
+        @media (max-width: $breakpoint-sm) {
+          margin: 24px 0;
+        }
     }
   
     .upload-label {
@@ -78,6 +95,10 @@
   
       &:hover {
         border-color: #2f6feb;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        padding: 24px;
       }
     }
   
@@ -110,6 +131,10 @@
       margin-bottom: 32px; 
       padding-bottom: 16px;
       
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+        gap: 12px;
+      }
     }
   
     .button {
@@ -156,8 +181,16 @@
           background-color: #f8f9fc;
         }
       }
+
+      @media (max-width: $breakpoint-sm) {
+        width: 100%;
+      }
+    }
+    @media (max-width: $breakpoint-md) {
+      padding: 16px;
     }
   }
+  
   
   .sr-only {
     position: absolute;
@@ -169,3 +202,4 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
   }
+
