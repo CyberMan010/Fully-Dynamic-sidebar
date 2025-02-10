@@ -46,6 +46,7 @@ export type IconName =
   | 'info-circle-blue'
   | 'info-circle'
   | 'text'
+  | 'category-2'
 
  
 

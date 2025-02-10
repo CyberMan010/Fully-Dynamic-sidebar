@@ -14,7 +14,7 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: 'Cairo', sans-serif;
-} 
+}
 
 .app {
   display: flex;
@@ -29,16 +29,13 @@ html, body {
   height: 100vh;
   overflow: hidden;
   background-color: #f3f4f6;
-  transition: margin-left 0.3s ease, width 0.3s ease;
-  width: calc(100% - 326px);
+  transition: margin-left 0.3s ease;
 
   &.shifted {
-    width: calc(100% - 108px);
-    margin-left: 108px;
+    margin-left: 320px;
 
     @media (max-width: $breakpoint-lg) {
       margin-left: 0;
-      width: 100%;
     }
   }
 }
@@ -55,13 +52,8 @@ html, body {
 
   &__container {
     width: 100%;
-    max-width: min(calc(100vw - 350px), 1600px);
+    max-width: clamp(1200px, 90vw, 1600px);
     margin: 0 auto;
-
-    .main-content.shifted & {
-      max-width: min(calc(100vw - 132px), 1600px); // Account for collapsed sidebar
-    }
-
     
     @media (min-width: $breakpoint-xxl) {
       max-width: 1800px;

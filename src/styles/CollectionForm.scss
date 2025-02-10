@@ -6,18 +6,35 @@ $breakpoint-xl: 1280px;
 // CollectionForm.scss
 .collection-form {
   .form-group {
-    margin-bottom: 24px;
+    display: flex;
+    padding: 29px 24px 14px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
 
     label {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #1a1d1f;
-      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-self: stretch;
+      width: 100%;
 
-      .required {
-        color: #2f6feb;
-        margin-left: 0.25rem;
+      > span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+        color: #1A1D1F;
+        font-size: 14px;
+        font-weight: 500;
+
+        .required {
+          color: #2F6FEB;
+          display: inline-flex;
+          align-items: center;
+          height: 14px;
+        }
       }
     }
 
@@ -25,6 +42,29 @@ $breakpoint-xl: 1280px;
       position: relative;
       display: inline-flex;
       align-items: center;
+      width: 100%;
+
+      input {
+        width: 100%;
+        height: 14px;
+        padding: 12px 40px;
+        border: 1px solid #E6E8EC;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #1A1D1F;
+        background-color: #F8F9FC;
+        transition: all 0.2s ease;
+
+        &::placeholder {
+          color: #6F767E;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #2F6FEB;
+          background-color: #fff;
+        }
+      }
 
       .input-prefix-icon {
         position: absolute;
@@ -32,28 +72,7 @@ $breakpoint-xl: 1280px;
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;
-      }
-
-      input {
-        background-color: #F8F9FC;
-        width: 100%;
-        padding: 12px 40px 12px 40px; // Adjust padding to accommodate icons
-        border: 1px solid #e6e8ec;
-        border-radius: 8px;
-        font-size: 0.875rem;
-        color: #1a1d1f;
-        background-color: #fff;
-        transition: all 0.2s ease;
-
-        &::placeholder {
-          padding-left: 32px; // Adjust placeholder padding to accommodate prefix icon
-          color: #6F767E;
-        }
-
-        &:focus {
-          outline: none;
-          border-color: #2f6feb;
-        }
+        color: #6F767E;
       }
 
       .input-suffix-icon {
@@ -62,19 +81,20 @@ $breakpoint-xl: 1280px;
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;
+        color: #6F767E;
       }
     }
 
-    textarea,
-    select {
-      background-color: #F8F9FC;
+    textarea {
       width: 100%;
+      min-height: 120px;
       padding: 12px 16px;
-      border: 1px solid #e6e8ec;
+      border: 1px solid #E6E8EC;
       border-radius: 8px;
-      font-size: 0.875rem;
-      color: #1a1d1f;
-      background-color: #fff;
+      font-size: 14px;
+      color: #1A1D1F;
+      background-color: #F8F9FC;
+      resize: vertical;
       transition: all 0.2s ease;
 
       &::placeholder {
@@ -83,34 +103,70 @@ $breakpoint-xl: 1280px;
 
       &:focus {
         outline: none;
-        border-color: #2f6feb;
+        border-color: #2F6FEB;
+        background-color: #fff;
       }
     }
 
     select {
+      width: 100%;
+      height: 40px;
+      padding: 12px 36px 12px 36px;
+      border: 1px solid #E6E8EC;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1A1D1F;
+      background-color: #F8F9FC;
+      background-image: url('/setting-4.svg'), url('/arrow-down.svg');
+      background-position: 12px center, right 12px center;
+      background-repeat: no-repeat, no-repeat;
+      background-size: 16px, 16px;
       appearance: none;
-      background-image: url('/icons/chevron-down.svg');
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
+      transition: all 0.2s ease;
+
+      &::placeholder {
+        color: #6F767E;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #2F6FEB;
+        background-color: #fff;
+      }
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
+    &.tags-input {
+      .input-with-icons {
+        input {
+          padding: 12px 12px 12px 36px;
+        }
 
-    @media (max-width: $breakpoint-sm) {
-      margin-bottom: 16px;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 16px;
+          height: 16px;
+          background-image: url('category-2.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          opacity: 0.5;
+        }
+      }
     }
   }
 
   .form-row {
     display: flex;
     gap: 24px;
+    padding: 0 24px;
 
     .form-group {
       flex: 1;
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
     @media (max-width: $breakpoint-md) {
@@ -120,61 +176,55 @@ $breakpoint-xl: 1280px;
   }
 
   .upload-area {
-    margin: 32px 0;
-
-    @media (max-width: $breakpoint-sm) {
-      margin: 24px 0;
-    }
+    margin: 0 24px;
+    padding: 24px 0;
   }
 
   .upload-label {
-    background-color: #F8F9FC;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 32px;
-    border: 2px dashed #e6e8ec;
+    gap: 16px;
+    background-color: #F8F9FC;
+    border: 2px dashed #E6E8EC;
     border-radius: 12px;
     cursor: pointer;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-      border-color: #2f6feb;
-    }
-
-    @media (max-width: $breakpoint-sm) {
-      padding: 24px;
+      border-color: #2F6FEB;
     }
   }
 
   .upload-icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 1rem;
+    color: #2F6FEB;
+    margin-bottom: 8px;
   }
 
   .upload-text {
-    color: #6f767e;
-    margin-bottom: 0.5rem;
+    color: #6F767E;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 4px;
 
     .upload-link {
-      color: #2f6feb;
+      color: #2F6FEB;
       font-weight: 500;
     }
   }
 
   .upload-hint {
-    font-size: 0.75rem;
-    color: #9ba1a8;
+    font-size: 12px;
+    color: #9BA1A8;
+    text-align: center;
   }
 
   .form-actions {
     display: flex;
-    justify-content: flex-start;
-    gap: 18rem;
-    margin-top: 24px;
-    margin-bottom: 32px;
-    padding-bottom: 16px;
+    justify-content: space-between;
+    padding: 24px;
+    margin-top: 60px;
 
     @media (max-width: $breakpoint-sm) {
       flex-direction: column;
@@ -186,44 +236,42 @@ $breakpoint-xl: 1280px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
+    padding: 12px 24px;
     border-radius: 8px;
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
+    min-width: 120px;
 
     &--primary {
       background-color: #2F6FEB;
-      padding: 12px 24px;
       color: #fff;
       border: none;
+      gap: 8px;
 
       &:hover {
         background-color: darken(#2F6FEB, 5%);
       }
 
       &:disabled {
-        background-color: #e6e8ec;
+        background-color: #E6E8EC;
         cursor: not-allowed;
       }
 
       .button-icon {
-        margin-right: 0.5rem;
-        font-size: 1.25rem;
-        line-height: 1;
+        font-size: 16px;
       }
     }
 
     &--text {
       background-color: transparent;
-      color: #6f767e;
+      color: #6F767E;
       border: none;
-      padding: 12px 24px;
 
       &:hover {
-        color: #1a1d1f;
-        background-color: #f8f9fc;
+        color: #1A1D1F;
+        background-color: #F8F9FC;
       }
     }
 

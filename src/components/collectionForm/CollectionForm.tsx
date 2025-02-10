@@ -40,27 +40,31 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
 
   return (
     <form onSubmit={handleSubmit} className="collection-form">
-      <div className="form-group">
-        <label>
-          Collection Name
-          <span className="required"><Icon name='info-circle-blue' size={10} /></span>
-          <div className="input-with-icons">
-            <Icon name='text' size={16} className="input-prefix-icon" />
-            <input
-              type="text"
-              value={formData.title}
-              onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-              placeholder="Arena"
-            />
-            <Icon name='info-circle' size={16} className="input-suffix-icon" />
-          </div>
-        </label>
-      </div>
+     <div className="form-group">
+  <label>
+    <span>
+      Collection Name<span style={{color: "red"}}>*</span>
+      <span className="required">
+        <Icon name="info-circle-blue" size={10} />
+      </span>
+    </span>
+    <div className="input-with-icons">
+      <Icon name="text" size={24} className="input-prefix-icon" />
+      <input
+        type="text"
+        value={formData.title}
+        onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))}
+        placeholder="Arena"
+      />
+      <Icon name="info-circle" size={16} className="input-suffix-icon" />
+    </div>
+  </label>
+</div>
 
       <div className="form-group">
         <label>
-          Description
-          <span className="required"><Icon name='info-circle-blue' size={10} /></span>
+        <span>  Description
+          <span className="required"><Icon name='info-circle-blue' size={10} /></span></span>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
@@ -71,35 +75,45 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
       </div>
 
       <div className="form-row">
-        <div className="form-group">
-          <label>
-            Tags
-            <span className="required"><Icon name='info-circle-blue' size={10} /></span>
-            <input
-              type="text"
-              value={formData.tags}
-              onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
-              placeholder="Placeholder"
-            />
-          </label>
-        </div>
-
-        <div className="form-group">
-          <label>
-            Access Level
-            <span className="required"><Icon name='info-circle-blue' size={10} /></span>
-            <select
-              value={formData.accessLevel}
-              onChange={(e) => setFormData(prev => ({ ...prev, accessLevel: e.target.value }))}
-            >
-              <option value="">Placeholder</option>
-              <option value="public">Public</option>
-              <option value="private">Private</option>
-              <option value="restricted">Restricted</option>
-            </select>
-          </label>
-        </div>
+  <div className="form-group tags-input">
+    <label>
+      <span>
+        Tags<span style={{color: "red"}}>*</span>
+        <span className="required">
+          <Icon name="info-circle-blue" size={10} />
+        </span>
+      </span>
+      <div className="input-with-icons">
+        <input
+          type="text"
+          value={formData.tags}
+          onChange={(e) => setFormData((prev) => ({ ...prev, tags: e.target.value }))}
+          placeholder="Placeholder"
+        />
       </div>
+    </label>
+  </div>
+
+  <div className="form-group">
+    <label>
+      <span>
+        Access Level<span style={{color: "red"}}>*</span>
+        <span className="required">
+          <Icon name="info-circle-blue" size={10} />
+        </span>
+      </span>
+      <select
+        value={formData.accessLevel}
+        onChange={(e) => setFormData((prev) => ({ ...prev, accessLevel: e.target.value }))}
+      >
+        <option value="">Placeholder</option>
+        <option value="public">Public</option>
+        <option value="private">Private</option>
+        <option value="restricted">Restricted</option>
+      </select>
+    </label>
+  </div>
+</div>
 
       <div className="upload-area">
         <input
