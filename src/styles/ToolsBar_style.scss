@@ -1,50 +1,74 @@
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1920px;
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
 body {
   font-family: 'Cairo', sans-serif;
 }
 
 .tools-bar {
-  width: 61.9rem;
-  height: 2.01rem;
-  padding: 16px 24px;
+  width: 100%;
+  max-width: 1038px;
+  height: auto;
+  min-height: 60px;
+  padding: 12px 24px;
   display: flex;
-  
+  flex-wrap: wrap;
   gap: .75rem;
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
   margin-bottom: 1.1875rem;
   margin-top: 1.1875rem;
+  box-sizing: border-box;
 
-  &__left {
+
+  @media (min-width: 1441px) {
+    max-width: 1800px;
+  }
+
+  &__left, &__center, &__right {
     display: flex;
-    gap: 24px;
     align-items: center;
   }
 
+  &__left {
+    flex: 1;
+    gap: .875rem;
+  }
+
+  &__center {
+    flex: 2;
+    justify-content: center;
+  }
+
+  &__right {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
   .view-button {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 40px;
-
+    
     span {
-      font-family: Cairo;
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
       color: #64748B;
     }
 
-    &.active {
-      span {
-        color: #172554;
-      }
+    &.active span {
+      color: #172554;
     }
 
     &:hover:not(.active) {
@@ -52,33 +76,39 @@ body {
     }
   }
 
-  &__center {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
   &__search {
-    display: flex;
-    align-items: center;
+    position: relative;
     width: 100%;
-    max-width: 33.75rem;
-    max-height: 1.9rem;
-    padding: .625rem .75rem .625rem .75rem;
-    gap: 1.3125rem;
+    max-width: 564px;
+    height: 44px;
+    
+    .icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      width: 1.5rem; 
+      height: 1.5rem; 
+      justify-content: center;
+      align-items: center;
+      color: #9CA3AF;
+      pointer-events: none;
+      z-index: 1;
+    }
+
     input {
-      
-      width: 35.75rem;
-      height: 2.75rem auto;
-      padding: .625rem .75rem .625rem .75rem;
+      width: 100%;
+      height: 100%;
+      padding: 10px 12px 10px 40px; 
       border: 1px solid #E5E7EB;
       border-radius: 8px;
       font-size: 14px;
       color: #374151;
       background: #fff;
+      box-sizing: border-box;
 
       &::placeholder {
-        font-family: Cairo;
         font-size: 14px;
         font-weight: 400;
         line-height: 20px;
@@ -90,36 +120,25 @@ body {
         border-color: #2563EB;
       }
     }
-
-    .icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #9CA3AF;
-      pointer-events: none;
-    }
   }
 
-  &__right {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    font-weight: 100;
-  }
-
-  &__filter-button {
+  &__filter-button,
+  &__add-button {
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+  }
+
+  &__filter-button {
     background: none;
     border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--Blue-950, #172554);;
-    margin-right: 12px;
+    color: #172554;
 
     &:hover {
       background-color: #F9FAFB;
@@ -127,24 +146,36 @@ body {
   }
 
   &__add-button {
-    max-width: 6.875rem;
-    max-height: 2.75rem;
-    font-family: 'Cairo';
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
     background-color: #2563EB;
     color: #FFF;
     border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    gap: 8px;
 
     &:hover {
       background-color: #1D4ED8;
     }
   }
+
+  @media (max-width: $breakpoint-lg) {
+    flex-direction: column;
+    align-items: stretch;
+    
+    &__left, &__center, &__right {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    &__right {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__filter-button,
+    &__add-button {
+      width: 100%;
+    }
+  }
 }
+

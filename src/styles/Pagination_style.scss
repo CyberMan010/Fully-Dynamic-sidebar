@@ -1,17 +1,27 @@
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
 .pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 7px;
   background: var(--Dark-Primary-Buttons-White, #FFF);
   border: 1px solid var(--Gray-Colors-Gray-10, #EBECF2);
   border-radius: 8px;
-  margin: 24px 0;
-  max-width: 63.175rem;
+  max-width: 1022px;
 
   &__info {
-    font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--Primary-Colors-Bark-Blue, #142452);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: Cairo;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    
   }
 
   &__controls {
@@ -20,6 +30,16 @@
   }
 
   &__button {
+    color: var(--Dark-Primary-Buttons-White, #FFF);
+text-align: center;
+font-variant-numeric: lining-nums proportional-nums;
+
+/* Font/Small Text - 12 */
+font-family: Cairo;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 17px; /* 141.667% */
     width: 32px;
     height: 34px;
     background: none;
@@ -56,8 +76,54 @@
     }
 
     &.active {
-      background-color: #2C4FA4;
+      background: var(--Function-Colors-Active, #2C4FA4);
       color: #fff;
     }
   }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  @media (min-width: 1441px) {
+    max-width: 1800px;
+  }
+
+
+  &__info {
+    @media (max-width: $breakpoint-sm) {
+      font-size: 10px;
+    }
+  }
+
+  &__controls {
+    @media (max-width: $breakpoint-sm) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__button {
+    @media (max-width: $breakpoint-sm) {
+      width: 28px;
+      height: 30px;
+      font-size: 10px;
+    }
+
+    img {
+      @media (max-width: $breakpoint-sm) {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__page {
+    @media (max-width: $breakpoint-sm) {
+      padding: 0.4rem 0.6rem;
+      font-size: 10px;
+    }
+  }
 }
+

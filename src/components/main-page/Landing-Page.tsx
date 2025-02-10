@@ -7,6 +7,7 @@ import { KnowledgeBasePagination } from "../Pagination/Pagination"
 import "../../styles/main_style.scss"
 import { UpperFrame } from "../Up-Frame/UpperFrame"
 
+
 const MOCK_DATA = Array.from({ length: 8 }, (_, i) => ({
   id: `${i}`,
   title: "Collection Name",
@@ -26,7 +27,7 @@ export const LandingPage: React.FC = () => {
     <div className="landing-page">
       <Header />
       <div className="landing-page__container">
-        <UpperFrame />
+       <UpperFrame />
         <div className="landing-page__content">
           <ToolsBar view={view} onViewChange={setView} onSearch={setSearchQuery} />
           <CardsFrame collections={MOCK_DATA} />

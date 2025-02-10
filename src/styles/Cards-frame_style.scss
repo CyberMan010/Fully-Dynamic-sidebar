@@ -47,4 +47,7 @@
     max-width: 272px; // 1 * 249.5px + some padding
   }
 }
-
+@media (min-width: 1441px) {
+  .cards-frame {
+      max-width: 1800px;
+  }}

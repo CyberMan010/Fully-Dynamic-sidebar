@@ -43,20 +43,24 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
       <div className="form-group">
         <label>
           Collection Name
-          <span className="required">*</span>
-          <input
-            type="text"
-            value={formData.title}
-            onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-            placeholder="Arena"
-          />
+          <span className="required"><Icon name='info-circle-blue' size={10} /></span>
+          <div className="input-with-icons">
+            <Icon name='text' size={16} className="input-prefix-icon" />
+            <input
+              type="text"
+              value={formData.title}
+              onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+              placeholder="Arena"
+            />
+            <Icon name='info-circle' size={16} className="input-suffix-icon" />
+          </div>
         </label>
       </div>
 
       <div className="form-group">
         <label>
           Description
-          <span className="required">*</span>
+          <span className="required"><Icon name='info-circle-blue' size={10} /></span>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
@@ -70,7 +74,7 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
         <div className="form-group">
           <label>
             Tags
-            <span className="required">*</span>
+            <span className="required"><Icon name='info-circle-blue' size={10} /></span>
             <input
               type="text"
               value={formData.tags}
@@ -83,7 +87,7 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, onCanc
         <div className="form-group">
           <label>
             Access Level
-            <span className="required">*</span>
+            <span className="required"><Icon name='info-circle-blue' size={10} /></span>
             <select
               value={formData.accessLevel}
               onChange={(e) => setFormData(prev => ({ ...prev, accessLevel: e.target.value }))}
