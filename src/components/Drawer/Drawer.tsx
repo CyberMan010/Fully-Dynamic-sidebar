@@ -1,37 +1,36 @@
-"use client"
-
-import { useEffect, type ReactNode } from "react"
-import "../../styles/Drawer_style.scss"
-import { Icon } from "../../config/icons"
+// Drawer.tsx
+import { useEffect } from "react";
+import "../../styles/Drawer_style.scss";
+import { Icon } from "../../config/icons";
 
 interface DrawerProps {
-  isOpen: boolean
-  onClose: () => void
-  children: ReactNode
-  title?: string
-  subtitle?: string
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  title?: string;
+  subtitle?: string;
 }
 
-export const Drawer: React.FC<DrawerProps> = ({ 
-  isOpen, 
-  onClose, 
-  children, 
+export const Drawer: React.FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  children,
   title = "Add New Collection",
   subtitle = "Knowledge Base / Create New Collection"
 }) => {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [isOpen])
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <>
@@ -40,16 +39,16 @@ export const Drawer: React.FC<DrawerProps> = ({
         <div className="drawer__header">
           <div className="drawer__header-content">
             <div className="drawer__icon">
-             <Icon name="archive" size={38} />
+              <Icon name="archive" size={38} />
             </div>
             <div className="drawer__titles">
               <h2 className="drawer__title">{title}</h2>
               <p className="drawer__subtitle">{subtitle}</p>
             </div>
           </div>
-          <button 
-            type="button" 
-            onClick={onClose} 
+          <button
+            type="button"
+            onClick={onClose}
             className="drawer__close"
             aria-label="Close drawer"
           >
@@ -59,5 +58,5 @@ export const Drawer: React.FC<DrawerProps> = ({
         <div className="drawer__content">{children}</div>
       </div>
     </>
-  )
-}
+  );
+};

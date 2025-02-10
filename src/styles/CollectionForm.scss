@@ -3,202 +3,247 @@ $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
 
+// CollectionForm.scss
 .collection-form {
-    .form-group {
-      margin-bottom: 24px;
-  
-      label {
-        display: block;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: #1a1d1f;
-        margin-bottom: 8px;
-  
-        .required { 
-          color: #2f6feb;
-          margin-left: 0.25rem;
-        }
+  .form-group {
+    margin-bottom: 24px;
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1a1d1f;
+      margin-bottom: 8px;
+
+      .required {
+        color: #2f6feb;
+        margin-left: 0.25rem;
       }
-  
-      input,
-      textarea,
-      select {
-        background-color: #F8F9FC; 
+    }
+
+    .input-with-icons {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+
+      .input-prefix-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      input {
+        background-color: #F8F9FC;
         width: 100%;
-        padding: 12px 16px;
+        padding: 12px 40px 12px 40px; // Adjust padding to accommodate icons
         border: 1px solid #e6e8ec;
         border-radius: 8px;
         font-size: 0.875rem;
         color: #1a1d1f;
         background-color: #fff;
         transition: all 0.2s ease;
-  
+
         &::placeholder {
-            color: #6F767E; // Adjust placeholder color
-          }
-  
+          padding-left: 32px; // Adjust placeholder padding to accommodate prefix icon
+          color: #6F767E;
+        }
+
         &:focus {
           outline: none;
           border-color: #2f6feb;
         }
       }
-  
-      select {
-        appearance: none;
-        background-image: url('/icons/chevron-down.svg');
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        padding-right: 2.5rem;
-      }
-  
-      textarea {
-        resize: vertical;
-        min-height: 120px;
-      }
 
-      @media (max-width: $breakpoint-sm) {
-        margin-bottom: 16px;
+      .input-suffix-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
       }
     }
-  
-    .form-row {
-      display: flex;
-      gap: 24px;
-  
-      .form-group {
-        flex: 1;
-      }
 
-      @media (max-width: $breakpoint-md) {
-        flex-direction: column;
-        gap: 16px;
-      }
-    }
-  
-    .upload-area {
-        margin: 32px 0;
-        @media (max-width: $breakpoint-sm) {
-          margin: 24px 0;
-        }
-    }
-  
-    .upload-label {
-        background-color: #F8F9FC;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 32px;
-      border: 2px dashed #e6e8ec;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: border-color 0.2s ease;
-  
-      &:hover {
-        border-color: #2f6feb;
-      }
-
-      @media (max-width: $breakpoint-sm) {
-        padding: 24px;
-      }
-    }
-  
-    .upload-icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 1rem;
-    }
-  
-    .upload-text {
-      color: #6f767e;
-      margin-bottom: 0.5rem;
-  
-      .upload-link {
-        color: #2f6feb;
-        font-weight: 500;
-      }
-    }
-  
-    .upload-hint {
-      font-size: 0.75rem;
-      color: #9ba1a8;
-    }
-  
-    .form-actions {
-      display: flex;
-      justify-content: flex-start;
-      gap: 18rem;
-      margin-top: 24px; 
-      margin-bottom: 32px; 
-      padding-bottom: 16px;
-      
-      @media (max-width: $breakpoint-sm) {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
-  
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
+    textarea,
+    select {
+      background-color: #F8F9FC;
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e6e8ec;
       border-radius: 8px;
       font-size: 0.875rem;
-      font-weight: 500;
-      cursor: pointer;
+      color: #1a1d1f;
+      background-color: #fff;
       transition: all 0.2s ease;
-      &--primary {
-        background-color: #2F6FEB;
-        padding: 12px 24px;
-        color: #fff;
-        border: none;
-  
-        &:hover {
-            background-color: darken(#2F6FEB, 5%);
-        }
-  
-        &:disabled {
-          background-color: #e6e8ec;
-          cursor: not-allowed;
-        }
-  
-        .button-icon {
-          margin-right: 0.5rem;
-          font-size: 1.25rem;
-          line-height: 1;
-        }
-      }
-  
-      &--text {
-        background-color: transparent;
-        color: #6f767e;
-        border: none;
-        padding: 12px 24px;
-  
-        &:hover {
-          color: #1a1d1f;
-          background-color: #f8f9fc;
-        }
+
+      &::placeholder {
+        color: #6F767E;
       }
 
-      @media (max-width: $breakpoint-sm) {
-        width: 100%;
+      &:focus {
+        outline: none;
+        border-color: #2f6feb;
       }
     }
+
+    select {
+      appearance: none;
+      background-image: url('/icons/chevron-down.svg');
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: 16px;
+    }
+  }
+
+  .form-row {
+    display: flex;
+    gap: 24px;
+
+    .form-group {
+      flex: 1;
+    }
+
     @media (max-width: $breakpoint-md) {
-      padding: 16px;
+      flex-direction: column;
+      gap: 16px;
     }
   }
-  
-  
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+
+  .upload-area {
+    margin: 32px 0;
+
+    @media (max-width: $breakpoint-sm) {
+      margin: 24px 0;
+    }
   }
 
+  .upload-label {
+    background-color: #F8F9FC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    border: 2px dashed #e6e8ec;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: #2f6feb;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 24px;
+    }
+  }
+
+  .upload-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+
+  .upload-text {
+    color: #6f767e;
+    margin-bottom: 0.5rem;
+
+    .upload-link {
+      color: #2f6feb;
+      font-weight: 500;
+    }
+  }
+
+  .upload-hint {
+    font-size: 0.75rem;
+    color: #9ba1a8;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 18rem;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--primary {
+      background-color: #2F6FEB;
+      padding: 12px 24px;
+      color: #fff;
+      border: none;
+
+      &:hover {
+        background-color: darken(#2F6FEB, 5%);
+      }
+
+      &:disabled {
+        background-color: #e6e8ec;
+        cursor: not-allowed;
+      }
+
+      .button-icon {
+        margin-right: 0.5rem;
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+    }
+
+    &--text {
+      background-color: transparent;
+      color: #6f767e;
+      border: none;
+      padding: 12px 24px;
+
+      &:hover {
+        color: #1a1d1f;
+        background-color: #f8f9fc;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 16px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

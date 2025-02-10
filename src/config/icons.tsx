@@ -43,6 +43,9 @@ export type IconName =
   | 'close-circle'
   | 'archive'
   | 'document-upload'
+  | 'info-circle-blue'
+  | 'info-circle'
+  | 'text'
 
  
 
